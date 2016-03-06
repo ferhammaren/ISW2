@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practica2;
+package clases;
 
 import clases.DataAccess;
 import clases.Juego;
@@ -88,13 +88,12 @@ public class Practica2 {
                      ResultSet b;
                     try {
                         b = da.getRanking();
-                        if(b!=null){
-                                
+                        if(b!=null){                               
                             System.out.println("-----|    Nombre    | Jugados | Ganados | Porcentaje de Ganados |-----\n");
                             do{
                             System.out.println("-----| "+b.getString("nombre_Jugador")+    "|           "+b.getInt("JUGADOS")+"      |       "+b.getInt("GANADOS")+"\n");
                             b.next();
-                            }while(!b.isLast());
+                            }while(!b.isAfterLast());
                         }else{
                             System.out.println("ERROR: NO HAY USUARIOS REGISTRADOS");
                         }
