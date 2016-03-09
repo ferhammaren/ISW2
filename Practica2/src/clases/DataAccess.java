@@ -17,7 +17,6 @@ import java.sql.*;
 public class DataAccess {
 
     private Connection conn = null;
-    private Statement stm = null;
     private static final String URL = "jdbc:mysql://localhost:3306/Practica2";
     private static final String USER = "isw";
     private static final String PSWD = "1234";
@@ -112,7 +111,7 @@ public class DataAccess {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
             String md5Pass=md5(input[1]);
-            cs = this.getConnection().prepareCall("{call agregarJugador(?,?,?,?)}");
+            cs = this.getConnection().prepareCall("{call updateJugador(?,?,?,?)}");
             cs.setString(1, input[0]);
             cs.setString(2, md5Pass);
             cs.setString(3, input[2]);
@@ -127,26 +126,5 @@ public class DataAccess {
     }
     
     
-    public String md5(String input){
-        String md5 = null;
-		
-		if(null == input) return null;
-		
-		try {
-			
-		//Create MessageDigest object for MD5
-		MessageDigest digest = MessageDigest.getInstance("MD5");
-		
-		//Update input string in message digest
-		digest.update(input.getBytes(), 0, input.length());
-
-		//Converts message digest value in base 16 (hex) 
-		md5 = new BigInteger(1, digest.digest()).toString(16);
-
-		} catch (NoSuchAlgorithmException e) {
-
-			e.printStackTrace();
-		}
-		return md5;
-    }
+    
 }

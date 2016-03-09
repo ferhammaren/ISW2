@@ -9,7 +9,7 @@ package clases;
  *
  * @author Fer
  */
-public class Hero1 implements SuperHeroe {
+public class Hero1 extends SuperHeroe {
     private int energy;
     private String name;
     public Hero1(int energy){
