@@ -14,14 +14,14 @@ import java.security.NoSuchAlgorithmException;
  * @author Fer
  */
 public class Encrypt {
-    private String encrypted;
+    private static String encrypted;
     private String input;
     
     public Encrypt(String input){
         this.input=input;
     }
     
-    public String md5(String input){
+    public static String md5(String input){
 		
 		if(null == input) return null;
 		
@@ -34,12 +34,12 @@ public class Encrypt {
 		digest.update(input.getBytes(), 0, input.length());
 
 		//Converts message digest value in base 16 (hex) 
-		md5 = new BigInteger(1, digest.digest()).toString(16);
+		encrypted = new BigInteger(1, digest.digest()).toString(16);
 
 		} catch (NoSuchAlgorithmException e) {
 
 			e.printStackTrace();
 		}
-		return md5;
+		return encrypted;
     }
 }

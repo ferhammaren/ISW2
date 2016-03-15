@@ -68,7 +68,7 @@ public class DataAccess {
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
-            String md5Pass=md5(input[1]);
+            String md5Pass=Encrypt.md5(input[1]);
             cs = this.getConnection().prepareCall("{call agregarJugador(?,?)}");
             cs.setString(1, input[0]);
             cs.setString(2, md5Pass);
@@ -110,10 +110,10 @@ public class DataAccess {
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
-            String md5Pass=md5(input[1]);
+            String md5Pass=Encrypt.md5(input[1]);
             cs = this.getConnection().prepareCall("{call updateJugador(?,?,?,?)}");
             cs.setString(1, input[0]);
-            cs.setString(2, md5Pass);
+            cs.setString(2, Encrypt.md5(input[0]));
             cs.setString(3, input[2]);
             cs.setString(4,input[3]);
             cs.execute();
