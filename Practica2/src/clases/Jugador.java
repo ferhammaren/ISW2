@@ -11,6 +11,7 @@ package clases;
  */
 public class Jugador {
     private String nombre;
+    private String pass;
     private int ganados;
     private int jugados;
     private boolean ai;
@@ -21,8 +22,9 @@ public class Jugador {
  * @param jugados El número de juegos jugados
  * 
  */
-    public Jugador(String nombre, int ganados, int jugados,boolean ai) {
+    public Jugador(String nombre,String pass, int ganados, int jugados,boolean ai) {
         this.nombre = nombre;
+        this.pass=pass;
         this.ganados = ganados;
         this.jugados = jugados;
         this.ai=ai;

@@ -25,6 +25,9 @@ public class Juego {
     private BufferedReader in = null;
     private PrintWriter out = null;
     private String line = "";
+    private int fightTime = 100;
+    private int p1Meter = 0;
+    private int p2Meter = 0;
 
     public Juego(Jugador p1, Jugador p2) {
         this.p1 = p1;
@@ -67,7 +70,7 @@ public class Juego {
             default:
                 break;
         }
-        if (p2.isAi()) {
+        if (p2.isAi()) { //deja a la computadora elegir el heroe
             int hero;
             Random x = new Random();
             hero = x.nextInt(4);
@@ -124,6 +127,35 @@ public class Juego {
                 default:
                     break;
             }
+             System.out.println("Turno de " + p2.getNombre() + "\n");
+               int selected=0;
+            Random x = new Random();
+            if(p2Meter>=5)
+            selected = x.nextInt(3);
+            else
+                selected=x.nextInt(2);
+            if(selected==0)
+                selected=1;
+             switch (selected) { //seleccion del comando
+                case 1:
+                    p1Hero.setEnergia(p1Hero.getEnergia() - p2Hero.patada());
+                    p2Meter++;
+                    break;
+                case 2:
+                    p1Hero.setEnergia(p1Hero.getEnergia() - p2Hero.fist());
+                   p2Meter++;
+                    break;
+                case 3:
+                    if (p1Meter < 5) { //restriccion para usar el especial
+                        System.out.println("No tienes energía!");
+                    } else {
+                        p1Hero.setEnergia(p1Hero.getEnergia() - p2Hero.special());
+                    }
+                    break;
+                default:
+                    break;
+            }
+             fightTime--;
         } while (p1Hero.getEnergia() != 0 || p2Hero.getEnergia() != 0 || fightTime != 0);
     }
 

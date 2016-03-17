@@ -31,7 +31,7 @@ public class Practica2 {
         PrintWriter out = null;
         DataAccess da = new DataAccess();
         Jugador p1=null;
-        Jugador p2=new Jugador("Hackerman",10,10,true);
+        Jugador p2=new Jugador("Hackerman","",10,10,true);
         do {
             System.out.println("*/*/*/*/*/*/*/*SUPER BATTLE HEROES GOLD 6TH ANNIVERSARY EDITION WITH DLC*\\*\\*\\*\\*\\*\\*\\*");
             if (regFlag != false) {
@@ -64,10 +64,13 @@ public class Practica2 {
                     ResultSet a;
                     System.out.println("Ingresa tu nombre de usuario: ");
                     try {
-                        line = in.readLine();
+                        line = in.readLine();     
+                        System.out.println("Ingresa tu contraseña: ");
+                        String b=in.readLine();
+                        line=line+b;
                         a = da.getJugador(line);
                         if(a!=null){
-                        p1 = new Jugador(a.getString("nombre_Jugador"), a.getInt("GANADOS"), a.getInt("JUGADOS"),false);
+                        p1 = new Jugador(a.getString("nombre_Jugador"),a.getString("pass"), a.getInt("GANADOS"), a.getInt("JUGADOS"),false);
                         regFlag=true;
                         }else{
                             System.out.println("ERROR: USUARIO NO ENCONTRADO");
