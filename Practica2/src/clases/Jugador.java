@@ -29,6 +29,12 @@ public class Jugador {
         this.jugados = jugados;
         this.ai=ai;
     }
+    /**
+     * Constructor en blanco
+     */
+    public Jugador(){
+        
+    }
 /**
  * Regresa el número de juegos ganados
  * @return int ganados

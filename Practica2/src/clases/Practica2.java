@@ -52,6 +52,8 @@ public class Practica2 {
                     System.out.println("Ingresa tu nombre de usuario: ");
                     try {
                         line = in.readLine();
+                        System.out.println("Ingresa tu contraseña: ");
+                        line=line+","+in.readLine();
                         da.nuevoJugador(line);
                         System.out.println("\nUSUARIO REGISTRADO");
                     } catch (Exception e) {
@@ -67,10 +69,10 @@ public class Practica2 {
                         line = in.readLine();     
                         System.out.println("Ingresa tu contraseña: ");
                         String b=in.readLine();
-                        line=line+b;
+                        line=line+","+b;
                         a = da.getJugador(line);
                         if(a!=null){
-                        p1 = new Jugador(a.getString("nombre_Jugador"),a.getString("pass"), a.getInt("GANADOS"), a.getInt("JUGADOS"),false);
+                        p1 = new Jugador(a.getString("nombre_Jugador"),a.getString("pwd_Jugador"), a.getInt("GANADOS"), a.getInt("JUGADOS"),false);
                         regFlag=true;
                         }else{
                             System.out.println("ERROR: USUARIO NO ENCONTRADO");
@@ -83,7 +85,8 @@ public class Practica2 {
                 case "3":
                     // <editor-fold defaultstate="collapsed" desc="Jugar"> 
                     Juego j=new Juego(p1,p2);
-                    j.selectHero();
+                  j.selectHero();
+                  j.jugar();
                     // </editor-fold> 
                     break;
                 case "4":

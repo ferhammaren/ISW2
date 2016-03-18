@@ -110,18 +110,24 @@ public class Juego {
 
             switch (line) { //seleccion del comando
                 case "1":
+                    
                     p2Hero.setEnergia(p2Hero.getEnergia() - p1Hero.patada());
                     p1Meter++;
+                    System.out.println("Patada de Heroe 1 a Heroe 2" +"\nEnergia p1:"+p1Hero.getEnergia()+" Energia p2: "+p2Hero.getEnergia()+"\n");
                     break;
                 case "2":
                     p2Hero.setEnergia(p2Hero.getEnergia() - p1Hero.fist());
                     p1Meter++;
+                    System.out.println("Puñetazo de Heroe 1 a Heroe 2" +"\nEnergia p1:"+p1Hero.getEnergia()+" Energia p2: "+p2Hero.getEnergia()+"\n");
                     break;
                 case "3":
                     if (p1Meter < 5) { //restriccion para usar el especial
                         System.out.println("No tienes energía!");
                     } else {
+                        
                         p2Hero.setEnergia(p2Hero.getEnergia() - p1Hero.special());
+                        p1Meter=0;
+                        System.out.println("ESPECIAL de Heroe 1 a Heroe 2" +"\nEnergia p1:"+p1Hero.getEnergia()+" Energia p2: "+p2Hero.getEnergia()+"\n");
                     }
                     break;
                 default:
@@ -138,18 +144,24 @@ public class Juego {
                 selected=1;
              switch (selected) { //seleccion del comando
                 case 1:
+                   
                     p1Hero.setEnergia(p1Hero.getEnergia() - p2Hero.patada());
                     p2Meter++;
+                     System.out.println("Patada de Heroe 2 a Heroe 1" +"\nEnergia p1:"+p1Hero.getEnergia()+" Energia p2: "+p2Hero.getEnergia()+"\n");
                     break;
                 case 2:
+                   
                     p1Hero.setEnergia(p1Hero.getEnergia() - p2Hero.fist());
                    p2Meter++;
+                    System.out.println("Puñetazo de Heroe 2 a Heroe 1" +"\nEnergia p1:"+p1Hero.getEnergia()+" Energia p2: "+p2Hero.getEnergia()+"\n");
                     break;
                 case 3:
                     if (p1Meter < 5) { //restriccion para usar el especial
                         System.out.println("No tienes energía!");
                     } else {
+                      
                         p1Hero.setEnergia(p1Hero.getEnergia() - p2Hero.special());
+                          System.out.println("ESPECIAL de Heroe 2 a Heroe 2" +"\nEnergia p1:"+p1Hero.getEnergia()+" Energia p2: "+p2Hero.getEnergia()+"\n");
                     }
                     break;
                 default:
