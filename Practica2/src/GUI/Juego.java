@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practica2;
+package GUI;
 
-import clases.JuegoControl;
+import manejadores.JuegoControl;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -52,6 +52,10 @@ public class Juego extends javax.swing.JFrame {
         registerButton = new javax.swing.JButton();
         limpiarButton = new javax.swing.JButton();
         selectHero = new javax.swing.JPanel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
         jugadorRegistrado = new javax.swing.JPanel();
         uNInsert2 = new javax.swing.JLabel();
         registerUsername1 = new javax.swing.JTextField();
@@ -68,7 +72,6 @@ public class Juego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SUPER BATTLE HEROES 2ND ANNIVERSARY GOLD EDITION WITH DLC");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.CardLayout());
 
         menu.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -243,15 +246,52 @@ public class Juego extends javax.swing.JFrame {
 
         getContentPane().add(nuevoJugador, "card4");
 
+        jToggleButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
+        jToggleButton1.setText("jToggleButton1");
+
+        jToggleButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
+        jToggleButton2.setText("jToggleButton1");
+
+        jToggleButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
+        jToggleButton3.setText("jToggleButton1");
+
+        jToggleButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
+        jToggleButton4.setText("jToggleButton1");
+
         javax.swing.GroupLayout selectHeroLayout = new javax.swing.GroupLayout(selectHero);
         selectHero.setLayout(selectHeroLayout);
         selectHeroLayout.setHorizontalGroup(
             selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGroup(selectHeroLayout.createSequentialGroup()
+                .addGap(218, 218, 218)
+                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(selectHeroLayout.createSequentialGroup()
+                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(427, Short.MAX_VALUE))
+            .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(selectHeroLayout.createSequentialGroup()
+                    .addGap(218, 218, 218)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(607, Short.MAX_VALUE)))
         );
         selectHeroLayout.setVerticalGroup(
             selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(selectHeroLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(274, Short.MAX_VALUE))
+            .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(selectHeroLayout.createSequentialGroup()
+                    .addGap(77, 77, 77)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(417, Short.MAX_VALUE)))
         );
 
         getContentPane().add(selectHero, "card8");
@@ -432,6 +472,10 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JPanel jugadorRegistrado;
     private javax.swing.JLabel jugarLabel;
     private javax.swing.JLabel jugarLabel1;

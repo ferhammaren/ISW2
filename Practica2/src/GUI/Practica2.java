@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package GUI;
 
 import clases.DataAccess;
+import clases.DataAccess;
 import clases.Juego;
+import clases.Juego;
+import clases.Jugador;
 import clases.Jugador;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,7 +88,7 @@ public class Practica2 {
                 case "3":
                     // <editor-fold defaultstate="collapsed" desc="Jugar"> 
                     Juego j=new Juego(p1,p2);
-                  j.selectHero();
+                //  j.selectHero();
                   j.jugar();
                     // </editor-fold> 
                     break;

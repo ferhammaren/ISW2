@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package manejadores;
 
+import clases.DataAccess;
+import clases.Juego;
+import clases.Jugador;
 import java.sql.ResultSet;
 
 /**
@@ -15,8 +18,10 @@ public class JuegoControl {
 
     private boolean regFlag = false;
     private DataAccess da = new DataAccess();
-    private Jugador p1 = new Jugador();
-private ResultSet a;
+    private Jugador p1 = new Jugador(), p2 = new Jugador();
+    private Juego j1;
+    private ResultSet a;
+
     public JuegoControl() {
 
     }
@@ -36,12 +41,21 @@ private ResultSet a;
     }
 
     public void getRegisteredUser(String name, String pwd) {
-      //  String enc_pwd = Encrypt.md5(pwd);
+        //  String enc_pwd = Encrypt.md5(pwd);
         String input_Parameters = name + "," + pwd;
         da.getJugador(input_Parameters);
     }
 
-    public void getRankings(){
-        
+    public void selectHero(int a) {
+        j1 = new Juego(p1, p2);
+        j1.selectHero(a);
+    }
+
+    public void jugar() {
+        j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
+    }
+
+    public void getRankings() {
+    a=da.getRanking();
     }
 }

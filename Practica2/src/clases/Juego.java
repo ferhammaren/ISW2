@@ -5,6 +5,7 @@
  */
 package clases;
 
+import clases.Heroes.Hero1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,7 +37,7 @@ public class Juego {
     // <editor-fold defaultstate="collapsed" desc="Jugar"> 
 
     // </editor-fold>
-    public void selectHero() {
+    public void selectHero(int a) {
         BufferedReader in = null;
         PrintWriter out = null;
         String line = "";
@@ -45,26 +46,17 @@ public class Juego {
         h2 = new Hero1(30);
         h3 = new Hero1(40);
         h4 = new Hero1(50);
-        System.out.println("\n Selecciona un heroe:\n[1] [2]\n[3] [4]\n");
-        in = new BufferedReader(new InputStreamReader(System.in));
-        out = new PrintWriter(System.out, true);
-        try {
-            line = in.readLine();
-        } catch (IOException ex) {
-            System.out.println("READ FAIL");
-            System.exit(-1);
-        }
-        switch (line) {
-            case "1":
+        switch (a) {
+            case 1:
                 p1Hero = h1;
                 break;
-            case "2":
+            case 2:
                 p1Hero = h2;
                 break;
-            case "3":
+            case 3:
                 p1Hero = h3;
                 break;
-            case "4":
+            case 4:
                 p1Hero = h4;
                 break;
             default:
