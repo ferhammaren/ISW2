@@ -11,6 +11,7 @@ import clases.Jugador;
 import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +24,7 @@ public class JuegoControl {
     private Jugador p1 = new Jugador(), p2 = new Jugador();
     private Juego j1;
     private ResultSet a;
+    private ArrayList<Jugador> jugadores;
 
     public JuegoControl() {
 
@@ -73,11 +75,12 @@ public class JuegoControl {
     public String getRank() throws SQLException{
         a=da.getRanking();
         String rank = "";
-        while(!a.isLast()){
-            System.out.println("ayy lmao");
-            rank += a.getString(1);
+        do{
+           // System.out.println("ayy");           
+            rank += a.getString("nombre_Jugador") + "\n";
             a.next();
-        }
+        }while(!a.isAfterLast());
+        
         return rank;
     }
 }
