@@ -459,7 +459,7 @@ public class Juego extends javax.swing.JFrame {
     private void rankingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingLabelMouseClicked
         try {
             // TODO add your handling code here:
-            control.getRank();
+            System.out.println(control.getRank());
         } catch (SQLException ex) {
             Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
         }

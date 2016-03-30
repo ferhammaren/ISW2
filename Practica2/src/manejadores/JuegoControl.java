@@ -73,7 +73,7 @@ public class JuegoControl {
     public String getRank() throws SQLException{
         a=da.getRanking();
         String rank = "";
-        while(a.isLast()){
+        while(!a.isLast()){
             System.out.println("ayy lmao");
             rank += a.getString(1);
             a.next();
