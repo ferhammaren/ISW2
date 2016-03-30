@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import manejadores.JuegoControl;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -108,6 +111,11 @@ public class Juego extends javax.swing.JFrame {
         rankingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rankingLabel.setText("Ranking");
         rankingLabel.setAlignmentX(400.0F);
+        rankingLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rankingLabelMouseClicked(evt);
+            }
+        });
 
         salirLabel.setFont(new java.awt.Font("Nueva Std", 0, 24)); // NOI18N
         salirLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -195,6 +203,11 @@ public class Juego extends javax.swing.JFrame {
         registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerButtonMouseClicked(evt);
+            }
+        });
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
             }
         });
 
@@ -398,6 +411,8 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registradoLabelMouseClicked
 
+    
+    
     private void nuevoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoLabelMouseClicked
         // TODO add your handling code here:
         menu.setVisible(false);
@@ -440,6 +455,19 @@ public class Juego extends javax.swing.JFrame {
            menu.setVisible(true);
         }
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void rankingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingLabelMouseClicked
+        try {
+            // TODO add your handling code here:
+            control.getRank();
+        } catch (SQLException ex) {
+            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rankingLabelMouseClicked
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
      * @param args the command line arguments

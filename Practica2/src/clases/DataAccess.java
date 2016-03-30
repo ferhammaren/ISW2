@@ -99,6 +99,14 @@ public class DataAccess {
         return a;
     }
     
+//    public ResultSet getRegistrados(){
+//        ResultSet res = null;
+//        CallableStatement c;
+//        try{
+//            c = this.getConnection().prepareCall("{call ")
+//        }
+//    }
+    
     /**
      * Actualiza la informacion de juegos del jugador
      * @param line String que contiene los parametros

@@ -8,7 +8,9 @@ package manejadores;
 import clases.DataAccess;
 import clases.Juego;
 import clases.Jugador;
+import java.sql.Array;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -57,5 +59,25 @@ public class JuegoControl {
 
     public void getRankings() {
     a=da.getRanking();
+    }
+    
+//    public String[] getRank() throws SQLException{
+//        a=da.getRanking();
+//        Array arr = a.getArray("");
+//        String[] str = (String[])arr.getArray();
+//        for (int i = 0; i < str.length; i++) {
+//            System.out.println(str[i]);
+//        }
+//        return str;
+//    }
+    public String getRank() throws SQLException{
+        a=da.getRanking();
+        String rank = "";
+        while(a.isLast()){
+            System.out.println("ayy lmao");
+            rank += a.getString(1);
+            a.next();
+        }
+        return rank;
     }
 }
