@@ -55,8 +55,8 @@ public class JuegoControl {
         j1.selectHero(a);
     }
 
-    public void jugar() {
-        j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
+    public Jugador jugar() {
+        return j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
     }
 
     public void getRankings() {
