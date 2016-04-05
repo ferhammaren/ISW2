@@ -23,7 +23,8 @@ public class JuegoControl {
     private DataAccess da = new DataAccess();
     private Jugador p1 = new Jugador(), p2 = new Jugador();
     private Juego j1;
-    private ResultSet a;
+   // private ResultSet a;
+    private ManejadorJugadores manejaJugadores;
     private ArrayList<Jugador> jugadores;
 
     public JuegoControl() {
@@ -38,17 +39,25 @@ public class JuegoControl {
         this.regFlag = flag;
     }
 
+//    public void registerUser(String name, String pwd) {
+//        String input_Parameters = name + "," + pwd;
+//        da.nuevoJugador(input_Parameters);
+//        p1.setNombre(name);
+//    }
+    
     public void registerUser(String name, String pwd) {
-        String input_Parameters = name + "," + pwd;
-        da.nuevoJugador(input_Parameters);
-        p1.setNombre(name);
+        manejaJugadores.registerUser(name, pwd);
     }
 
-    public void getRegisteredUser(String name, String pwd) {
-        //  String enc_pwd = Encrypt.md5(pwd);
-        String input_Parameters = name + "," + pwd;
-        da.getJugador(input_Parameters);
-    }
+//    public void getRegisteredUser(String name, String pwd) {
+//        //  String enc_pwd = Encrypt.md5(pwd);
+//        String input_Parameters = name + "," + pwd;
+//        da.getJugador(input_Parameters);
+//    }
+    
+   public void getRegisteredUser(String name, String pwd) throws SQLException {
+       manejaJugadores.getRegisteredUser(name, pwd);
+   }
 
     public void selectHero(int a) {
         j1 = new Juego(p1, p2);
@@ -59,9 +68,9 @@ public class JuegoControl {
         return j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
     }
 
-    public void getRankings() {
-    a=da.getRanking();
-    }
+//    public void getRankings() {
+//    a=da.getRanking();
+//    }
     
 //    public String[] getRank() throws SQLException{
 //        a=da.getRanking();
@@ -72,15 +81,19 @@ public class JuegoControl {
 //        }
 //        return str;
 //    }
-    public String getRank() throws SQLException{
-        a=da.getRanking();
-        String rank = "";
-        do{
-           // System.out.println("ayy");           
-            rank += a.getString("nombre_Jugador") + "\n";
-            a.next();
-        }while(!a.isAfterLast());
-        
-        return rank;
+    
+    public String[] getRanking() throws SQLException{
+        return manejaJugadores.getRanking();
     }
+//    public String getRank() throws SQLException{
+//        a=da.getRanking();
+//        String rank = "";
+//        do{
+//           // System.out.println("ayy");           
+//            rank += a.getString("nombre_Jugador") + "\n";
+//            a.next();
+//        }while(!a.isAfterLast());
+//        
+//        return rank;
+//    }
 }

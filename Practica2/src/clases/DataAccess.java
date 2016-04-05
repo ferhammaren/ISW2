@@ -94,7 +94,6 @@ public class DataAccess {
             a.next();
         } catch (Exception ex) {
             System.out.println("err " + ex.toString());
-
         }
         return a;
     }
