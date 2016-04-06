@@ -81,8 +81,14 @@ public class JuegoControl {
 //        }
 //        return str;
 //    }
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     
-    public String[] getRanking() throws SQLException{
+    public ArrayList<Jugador> getRanking() throws SQLException{
         return manejaJugadores.getRanking();
     }
 //    public String getRank() throws SQLException{

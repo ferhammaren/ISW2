@@ -9,6 +9,7 @@ import clases.DataAccess;
 import clases.Jugador;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ManejadorJugadores {
 
     private DataAccess da = new DataAccess();
     private Jugador p1 = new Jugador(), p2 = new Jugador();
+    private ArrayList<Jugador> jugadores;
 
     public boolean registerUser(String name, String pwd) {
         boolean b;
@@ -33,17 +35,28 @@ public class ManejadorJugadores {
         return da.getJugador(input_Parameters).getString("nombre_jugador");
     }
 
-    public String[] getRanking() throws SQLException {
+    
+    public ArrayList<Jugador> getRanking() throws SQLException {
         ResultSet rs = da.getRanking();
-        String[] str = new String[200];
-        int cont = 0;
+        jugadores = new ArrayList();
         do {
-            str[cont] = rs.getString("nombre_Jugador") + "\n";
+            jugadores.add(new Jugador(rs.getString("nombre_jugador"), rs.getString("pwd_jugador"), Integer.parseInt(rs.getString("ganados")), Integer.parseInt(rs.getString("jugados")), false));
             rs.next();
-            cont++;
         } while (!rs.isAfterLast());
-        return str;
+        return jugadores;
     }
+    
+//    public String[] getRanking() throws SQLException {
+//        ResultSet rs = da.getRanking();
+//        String[] str = new String[200];
+//        int cont = 0;
+//        do {
+//            str[cont] = rs.getString("nombre_Jugador") + "\n";
+//            rs.next();
+//            cont++;
+//        } while (!rs.isAfterLast());
+//        return str;
+//    }
     
     public void updateJugador(){
         
