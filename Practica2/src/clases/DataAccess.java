@@ -41,24 +41,27 @@ public class DataAccess {
      * Ejecuta el procedimiento almacenado de insertar jugador.
      *
      * @param line Los parámetros a insertar en el procedimiento.
+     * @return boolean
      */
-    public void nuevoJugador(String line) {
+    public boolean nuevoJugador(String line) {
         CallableStatement cs;
+        boolean b = false;
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
             cs = this.getConnection().prepareCall("{call agregarJugador(?,?)}");
             cs.setString(1, input[0]);
             cs.setString(2, input[1]);
-            cs.execute();
-
+            b = cs.execute();
         } catch (Exception ex) {
             System.out.println("err " + ex.toString());
         }
+        return b;
     }
 
     /**
      * Regresa los datos de un jugador ya registrado en la BBDD
+     *
      * @param line texto con los parametros
      * @return ResultSet con la informacion del jugador
      */
@@ -68,11 +71,11 @@ public class DataAccess {
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
-            String md5Pass=Encrypt.md5(input[1]);
+            String md5Pass = Encrypt.md5(input[1]);
             cs = this.getConnection().prepareCall("{call getJugador(?,?)}");
             cs.setString(1, input[0]);
             cs.setString(2, md5Pass);
-            a=cs.executeQuery();
+            a = cs.executeQuery();
             a.next();
         } catch (Exception ex) {
             System.out.println("err " + ex.toString());
@@ -80,10 +83,12 @@ public class DataAccess {
         }
         return a;
     }
-/**
- * Regresa el ranking de jugadores. Se recorre con .next
- * @return Set de resultados con el primer jugador en el ranking. 
- */
+
+    /**
+     * Regresa el ranking de jugadores. Se recorre con .next
+     *
+     * @return Set de resultados con el primer jugador en el ranking.
+     */
     public ResultSet getRanking() {
         ResultSet a = null;
         CallableStatement cs;
@@ -97,7 +102,7 @@ public class DataAccess {
         }
         return a;
     }
-    
+
 //    public ResultSet getRegistrados(){
 //        ResultSet res = null;
 //        CallableStatement c;
@@ -105,9 +110,9 @@ public class DataAccess {
 //            c = this.getConnection().prepareCall("{call ")
 //        }
 //    }
-    
     /**
      * Actualiza la informacion de juegos del jugador
+     *
      * @param line String que contiene los parametros
      * @return ResultSet con los datos del jugador actualziados
      */
@@ -117,12 +122,12 @@ public class DataAccess {
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
-            String md5Pass=Encrypt.md5(input[1]);
+            //String md5Pass=Encrypt.md5(input[1]);
             cs = this.getConnection().prepareCall("{call updateJugador(?,?,?,?)}");
             cs.setString(1, input[0]);
             cs.setString(2, Encrypt.md5(input[0]));
             cs.setString(3, input[2]);
-            cs.setString(4,input[3]);
+            cs.setString(4, input[3]);
             cs.execute();
             a.next();
         } catch (Exception ex) {
@@ -131,7 +136,5 @@ public class DataAccess {
         }
         return a;
     }
-    
-    
-    
+
 }

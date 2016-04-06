@@ -409,6 +409,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void registradoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registradoLabelMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_registradoLabelMouseClicked
 
     
@@ -446,7 +447,11 @@ public class Juego extends javax.swing.JFrame {
         int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas iniciar sesión?", "Confirmar", JOptionPane.YES_NO_OPTION
         );
         if (yesNoResponse == JOptionPane.YES_OPTION) {
-           control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
+            try {
+                control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+            }
            welcomeLabel.setText("Bienvenido "+registerUsername.getText());
            nuevoJugador.setVisible(false);
            menu.setVisible(true);

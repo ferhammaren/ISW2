@@ -20,10 +20,11 @@ public class ManejadorJugadores {
     private Jugador p1 = new Jugador(), p2 = new Jugador();
 
     public boolean registerUser(String name, String pwd) {
+        boolean b;
         String input_Parameters = name + "," + pwd;
-        da.nuevoJugador(input_Parameters);
+        b = da.nuevoJugador(input_Parameters);
         p1.setNombre(name);
-        return true;
+        return b;
     }
 
     public String getRegisteredUser(String name, String pwd) throws SQLException {
