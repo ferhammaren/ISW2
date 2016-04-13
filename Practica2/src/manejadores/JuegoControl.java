@@ -23,12 +23,11 @@ public class JuegoControl {
     private DataAccess da = new DataAccess();
     private Jugador p1 = new Jugador(), p2 = new Jugador();
     private Juego j1;
-   // private ResultSet a;
     private ManejadorJugadores manejaJugadores;
-    private ArrayList<Jugador> jugadores;
+    //private ArrayList<Jugador> jugadores;
 
     public JuegoControl() {
-
+        this.manejaJugadores = new ManejadorJugadores();
     }
 
     public boolean getFlag() {

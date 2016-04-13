@@ -82,11 +82,14 @@ public class Jugador {
     }
 
     @Override
+//    public String toString() {
+//        return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}' + "\n";
+//    }
+//    
     public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}';
+        //return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}' + "\n";
+        return "Nombre: "+ nombre + " | Jugados: " + jugados + " | Ganados: " + ganados + "\n";
     }
-    
-    
     
     
 }

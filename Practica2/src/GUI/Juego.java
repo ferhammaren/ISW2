@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import clases.Jugador;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import manejadores.JuegoControl;
@@ -17,7 +19,7 @@ import javax.swing.UIManager;
  * @author Fer
  */
 public class Juego extends javax.swing.JFrame {
-
+    
     private JuegoControl control = new JuegoControl();
 
     /**
@@ -67,6 +69,9 @@ public class Juego extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         ranking = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rankArea = new javax.swing.JTextArea();
         instrucciones = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -121,6 +126,11 @@ public class Juego extends javax.swing.JFrame {
         salirLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salirLabel.setText("Salir");
         salirLabel.setAlignmentX(400.0F);
+        salirLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirLabelMouseClicked(evt);
+            }
+        });
 
         welcomeLabel.setFont(new java.awt.Font("Nueva Std", 0, 24)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -259,16 +269,12 @@ public class Juego extends javax.swing.JFrame {
 
         getContentPane().add(nuevoJugador, "card4");
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
         jToggleButton1.setText("jToggleButton1");
 
-        jToggleButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
         jToggleButton2.setText("jToggleButton1");
 
-        jToggleButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
         jToggleButton3.setText("jToggleButton1");
 
-        jToggleButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Fer\\Desktop\\Basecamp\\buttercup03.gif")); // NOI18N
         jToggleButton4.setText("jToggleButton1");
 
         javax.swing.GroupLayout selectHeroLayout = new javax.swing.GroupLayout(selectHero);
@@ -365,15 +371,38 @@ public class Juego extends javax.swing.JFrame {
 
         getContentPane().add(jugadorRegistrado, "card5");
 
+        jButton3.setText("Atras");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        rankArea.setColumns(20);
+        rankArea.setRows(5);
+        jScrollPane1.setViewportView(rankArea);
+
         javax.swing.GroupLayout rankingLayout = new javax.swing.GroupLayout(ranking);
         ranking.setLayout(rankingLayout);
         rankingLayout.setHorizontalGroup(
             rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rankingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(54, 54, 54))
+            .addGroup(rankingLayout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         rankingLayout.setVerticalGroup(
             rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(rankingLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(65, 65, 65))
         );
 
         getContentPane().add(ranking, "card7");
@@ -411,9 +440,8 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_registradoLabelMouseClicked
+    
 
-    
-    
     private void nuevoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoLabelMouseClicked
         // TODO add your handling code here:
         menu.setVisible(false);
@@ -425,13 +453,13 @@ public class Juego extends javax.swing.JFrame {
         int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas registrarte?", "Confirmar", JOptionPane.YES_NO_OPTION
         );
         if (yesNoResponse == JOptionPane.YES_OPTION) {
-           control.registerUser(registerUsername.getText(), registerPassword.getText());
-           welcomeLabel.setText("Bienvenido "+registerUsername.getText());
-           nuevoJugador.setVisible(false);
-           menu.setVisible(true);
+            control.registerUser(registerUsername.getText(), registerPassword.getText());
+            welcomeLabel.setText("Bienvenido " + registerUsername.getText());
+            nuevoJugador.setVisible(false);
+            menu.setVisible(true);
         } else {
-           nuevoJugador.setVisible(false);
-           menu.setVisible(true);
+            nuevoJugador.setVisible(false);
+            menu.setVisible(true);
         }
         
     }//GEN-LAST:event_registerButtonMouseClicked
@@ -452,19 +480,29 @@ public class Juego extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
             }
-           welcomeLabel.setText("Bienvenido "+registerUsername.getText());
-           nuevoJugador.setVisible(false);
-           menu.setVisible(true);
+            welcomeLabel.setText("Bienvenido " + registerUsername.getText());
+            nuevoJugador.setVisible(false);
+            menu.setVisible(true);
         } else {
-           nuevoJugador.setVisible(false);
-           menu.setVisible(true);
+            nuevoJugador.setVisible(false);
+            menu.setVisible(true);
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void rankingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingLabelMouseClicked
         try {
             // TODO add your handling code here:
-            System.out.println(control.getRanking());
+            menu.setVisible(false);
+            ranking.setVisible(true);
+            //String rank = "";
+            // jLabel2.setText("");
+            rankArea.setText("");
+            ArrayList<Jugador> jug = control.getRanking();
+            for (int i = 0; i < jug.size(); i++) {
+                rankArea.append(jug.get(i).toString());
+                //rank += jug.get(i).toString();
+            }
+            //jLabel2.setText(rank);
         } catch (SQLException ex) {
             Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -473,6 +511,18 @@ public class Juego extends javax.swing.JFrame {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ranking.setVisible(false);
+        menu.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void salirLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirLabelMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Adiós");
+        System.exit(0);
+    }//GEN-LAST:event_salirLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -491,7 +541,7 @@ public class Juego extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Juego().setVisible(true);
-
+                
             }
         });
     }
@@ -500,11 +550,13 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel instrucciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
@@ -517,6 +569,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel nuevoJugador;
     private javax.swing.JLabel nuevoLabel;
     private javax.swing.JPanel play;
+    private javax.swing.JTextArea rankArea;
     private javax.swing.JPanel ranking;
     private javax.swing.JLabel rankingLabel;
     private javax.swing.JButton registerButton;
