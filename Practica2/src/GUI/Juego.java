@@ -19,7 +19,7 @@ import javax.swing.UIManager;
  * @author Fer
  */
 public class Juego extends javax.swing.JFrame {
-    
+
     private JuegoControl control = new JuegoControl();
 
     /**
@@ -67,7 +67,7 @@ public class Juego extends javax.swing.JFrame {
         uNInsert3 = new javax.swing.JLabel();
         registerPassword1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
         ranking = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -323,10 +323,15 @@ public class Juego extends javax.swing.JFrame {
 
         jButton1.setText("Limpiar");
 
-        jButton2.setText("Login");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        login.setText("Login");
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                loginMouseClicked(evt);
+            }
+        });
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
             }
         });
 
@@ -348,7 +353,7 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(359, 359, 359)
                 .addComponent(jButton1)
                 .addGap(70, 70, 70)
-                .addComponent(jButton2)
+                .addComponent(login)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jugadorRegistradoLayout.setVerticalGroup(
@@ -365,7 +370,7 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jugadorRegistradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(login))
                 .addContainerGap(306, Short.MAX_VALUE))
         );
 
@@ -438,9 +443,10 @@ public class Juego extends javax.swing.JFrame {
 
     private void registradoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registradoLabelMouseClicked
         // TODO add your handling code here:
-        
+        menu.setVisible(false);
+        jugadorRegistrado.setVisible(true);
     }//GEN-LAST:event_registradoLabelMouseClicked
-    
+
 
     private void nuevoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoLabelMouseClicked
         // TODO add your handling code here:
@@ -461,7 +467,7 @@ public class Juego extends javax.swing.JFrame {
             nuevoJugador.setVisible(false);
             menu.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_registerButtonMouseClicked
 
     private void limpiarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarButtonMouseClicked
@@ -470,7 +476,7 @@ public class Juego extends javax.swing.JFrame {
         registerPassword.setText("");
     }//GEN-LAST:event_limpiarButtonMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         // TODO add your handling code here:
         int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas iniciar sesión?", "Confirmar", JOptionPane.YES_NO_OPTION
         );
@@ -487,7 +493,7 @@ public class Juego extends javax.swing.JFrame {
             nuevoJugador.setVisible(false);
             menu.setVisible(true);
         }
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_loginMouseClicked
 
     private void rankingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingLabelMouseClicked
         try {
@@ -520,9 +526,17 @@ public class Juego extends javax.swing.JFrame {
 
     private void salirLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirLabelMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Adiós");
-        System.exit(0);
+        
+        int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas salir de la aplicación?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if(yesNoResponse == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Adiós");
+            System.exit(0);
+        }
     }//GEN-LAST:event_salirLabelMouseClicked
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -541,7 +555,7 @@ public class Juego extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Juego().setVisible(true);
-                
+
             }
         });
     }
@@ -549,7 +563,6 @@ public class Juego extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel instrucciones;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -565,6 +578,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jugarLabel;
     private javax.swing.JLabel jugarLabel1;
     private javax.swing.JButton limpiarButton;
+    private javax.swing.JButton login;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel nuevoJugador;
     private javax.swing.JLabel nuevoLabel;

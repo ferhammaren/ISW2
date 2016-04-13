@@ -18,8 +18,10 @@ public class Jugador {
 /**
  * Constructor 1
  * @param nombre El nombre de usuario que eligio el jugador
+ * @param pass La contraseña del jugador
  * @param ganados El número de juegos ganados
  * @param jugados El número de juegos jugados
+ * @param ai Determina si el jugador es inteligencia artificial o humano
  * 
  */
     public Jugador(String nombre,String pass, int ganados, int jugados,boolean ai) {
