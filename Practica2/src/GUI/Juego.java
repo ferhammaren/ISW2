@@ -66,6 +66,7 @@ public class Juego extends javax.swing.JFrame {
         hero1Button = new javax.swing.JToggleButton();
         hero2Button = new javax.swing.JToggleButton();
         hero3Button = new javax.swing.JToggleButton();
+        playButton = new javax.swing.JButton();
         jugadorRegistrado = new javax.swing.JPanel();
         uNInsert2 = new javax.swing.JLabel();
         registerUsername1 = new javax.swing.JTextField();
@@ -296,6 +297,11 @@ public class Juego extends javax.swing.JFrame {
                 hero1ButtonMouseClicked(evt);
             }
         });
+        hero1Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hero1ButtonActionPerformed(evt);
+            }
+        });
 
         hero2Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/koyomi.jpg"))); // NOI18N
         hero2Button.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -308,6 +314,13 @@ public class Juego extends javax.swing.JFrame {
         hero3Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hero3ButtonMouseClicked(evt);
+            }
+        });
+
+        playButton.setText("Jugar");
+        playButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                playButtonMouseClicked(evt);
             }
         });
 
@@ -325,23 +338,25 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(244, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(playButton)
+                .addGap(416, 416, 416))
         );
         selectHeroLayout.setVerticalGroup(
             selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectHeroLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(selectHeroLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(hero1Button, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                    .addComponent(hero1Button, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(hero3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(playButton)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jPanel1.add(selectHero, "selectHero");
@@ -689,6 +704,14 @@ public class Juego extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
 
+    private void hero1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hero1ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hero1ButtonActionPerformed
+
+    private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -733,6 +756,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel nuevoJugador;
     private javax.swing.JLabel nuevoLabel;
     private javax.swing.JPanel play;
+    private javax.swing.JButton playButton;
     private javax.swing.JTextArea rankArea;
     private javax.swing.JPanel ranking;
     private javax.swing.JLabel rankingLabel;
