@@ -29,36 +29,31 @@ public class ManejadorJugadores {
         return b;
     }
 
-    public String getRegisteredUser(String name, String pwd) throws SQLException {
+    public Jugador getRegisteredUser(String name, String pwd) throws SQLException {
         //  String enc_pwd = Encrypt.md5(pwd);
+        ResultSet datosJugador;
         String input_Parameters = name + "," + pwd;
-        return da.getJugador(input_Parameters).getString("nombre_jugador");
+        datosJugador = da.getJugador(input_Parameters);
+        p1.setNombre(datosJugador.getString("nombre_Jugador"));
+        p1.setGanados(Integer.parseInt(datosJugador.getString("ganados")));
+        p1.setJugados(Integer.parseInt(datosJugador.getString("jugados")));
+        return p1;
+// return da.getJugador(input_Parameters).getString("nombre_Jugador");
     }
 
-    
     public ArrayList<Jugador> getRanking() throws SQLException {
         ResultSet rs = da.getRanking();
         jugadores = new ArrayList();
-        do {
+
+        for (int i = 0; i < 10; i++) {
             jugadores.add(new Jugador(rs.getString("nombre_jugador"), rs.getString("pwd_jugador"), Integer.parseInt(rs.getString("ganados")), Integer.parseInt(rs.getString("jugados")), false));
             rs.next();
-        } while (!rs.isAfterLast());
+        }
+
         return jugadores;
     }
-    
-//    public String[] getRanking() throws SQLException {
-//        ResultSet rs = da.getRanking();
-//        String[] str = new String[200];
-//        int cont = 0;
-//        do {
-//            str[cont] = rs.getString("nombre_Jugador") + "\n";
-//            rs.next();
-//            cont++;
-//        } while (!rs.isAfterLast());
-//        return str;
-//    }
-    
-    public void updateJugador(){
-        
+
+    public void updateJugador() {
+
     }
 }

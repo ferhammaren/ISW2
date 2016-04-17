@@ -37,46 +37,46 @@ public class Juego {
     // <editor-fold defaultstate="collapsed" desc="Jugar"> 
 
     // </editor-fold>
-    public void selectHero(int a) {
-        BufferedReader in = null;
-        PrintWriter out = null;
-        String line = "";
-        Hero1 h1, h2, h3, h4;
-        h1 = new Hero1(20);
-        h2 = new Hero1(30);
-        h3 = new Hero1(40);
-        h4 = new Hero1(50);
-        switch (a) {
-            case 1:
-                p1Hero = h1;
-                break;
-            case 2:
-                p1Hero = h2;
-                break;
-            case 3:
-                p1Hero = h3;
-                break;
-            case 4:
-                p1Hero = h4;
-                break;
-            default:
-                break;
-        }
-        if (p2.isAi()) { //deja a la computadora elegir el heroe
-            int hero;
-            Random x = new Random();
-            hero = x.nextInt(4);
-            if (hero < 1) {
-                p2Hero = h1;
-            } else if (hero == 2) {
-                p2Hero = h2;
-            } else if (hero == 3) {
-                p2Hero = h3;
-            } else {
-                p2Hero = h4;
-            }
-        }
-    }
+//    public void selectHero(int a) {
+//        BufferedReader in = null;
+//        PrintWriter out = null;
+//        String line = "";
+//        Hero1 h1, h2, h3, h4;
+//        h1 = new Hero1(20);
+//        h2 = new Hero1(30);
+//        h3 = new Hero1(40);
+//        h4 = new Hero1(50);
+//        switch (a) {
+//            case 1:
+//                p1Hero = h1;
+//                break;
+//            case 2:
+//                p1Hero = h2;
+//                break;
+//            case 3:
+//                p1Hero = h3;
+//                break;
+//            case 4:
+//                p1Hero = h4;
+//                break;
+//            default:
+//                break;
+//        }
+//        if (p2.isAi()) { //deja a la computadora elegir el heroe
+//            int hero;
+//            Random x = new Random();
+//            hero = x.nextInt(4);
+//            if (hero < 1) {
+//                p2Hero = h1;
+//            } else if (hero == 2) {
+//                p2Hero = h2;
+//            } else if (hero == 3) {
+//                p2Hero = h3;
+//            } else {
+//                p2Hero = h4;
+//            }
+//        }
+//    }
 
     public Jugador jugar() {
         int fightTime = 100;

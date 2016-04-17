@@ -9,9 +9,6 @@ package clases;
  *
  * @author Fer
  */
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class DataAccess {
@@ -71,10 +68,10 @@ public class DataAccess {
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
-            String md5Pass = Encrypt.md5(input[1]);
+           // String md5Pass = Encrypt.md5(input[1]);
             cs = this.getConnection().prepareCall("{call getJugador(?,?)}");
             cs.setString(1, input[0]);
-            cs.setString(2, md5Pass);
+            cs.setString(2, input[1]);
             a = cs.executeQuery();
             a.next();
         } catch (Exception ex) {
