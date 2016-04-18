@@ -934,7 +934,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero2ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseEntered
         // TODO add your handling code here:
-         playerOniichan.setText("Koyomi Araragi");
+        playerOniichan.setText("Koyomi Araragi");
         oniiChanPowerLevel.setValue(31);
         oniichanAttack.setValue(38);
     }//GEN-LAST:event_hero2ButtonMouseEntered
