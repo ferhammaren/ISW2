@@ -664,6 +664,7 @@ public class Juego extends javax.swing.JFrame {
             try {
                 control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
                 registerFlag = true;
+                System.out.println("ayy why");
             } catch (SQLException ex) {
                 //Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen");
