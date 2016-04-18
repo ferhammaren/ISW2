@@ -384,7 +384,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="AIAttack" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AILevelBar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
@@ -422,7 +422,7 @@
                                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jProgressBar1" min="-2" pref="22" max="-2" attributes="0"/>
+                                              <Component id="AILevelBar" min="-2" pref="22" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="playerOniichan" min="-2" max="-2" attributes="0"/>
@@ -438,7 +438,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -491,7 +491,7 @@
                 <Property name="text" type="java.lang.String" value="Power Level"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+            <Component class="javax.swing.JProgressBar" name="AILevelBar">
             </Component>
             <Component class="javax.swing.JButton" name="hero1Button">
               <Properties>

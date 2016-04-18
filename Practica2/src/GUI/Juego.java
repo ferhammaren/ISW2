@@ -70,7 +70,7 @@ public class Juego extends javax.swing.JFrame {
         AIOniichan = new javax.swing.JLabel();
         AIattack = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        AILevelBar = new javax.swing.JProgressBar();
         hero1Button = new javax.swing.JButton();
         hero2Button = new javax.swing.JButton();
         hero3Button = new javax.swing.JButton();
@@ -408,7 +408,7 @@ public class Juego extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
                         .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(AIAttack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(AILevelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24))))
         );
         selectHeroLayout.setVerticalGroup(
@@ -438,7 +438,7 @@ public class Juego extends javax.swing.JFrame {
                                         .addGap(28, 28, 28)
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(AILevelBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(selectHeroLayout.createSequentialGroup()
                                         .addComponent(playerOniichan)
                                         .addGap(49, 49, 49)
@@ -449,7 +449,7 @@ public class Juego extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(oniiChanPowerLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 22, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(playButton)))
@@ -755,7 +755,7 @@ public class Juego extends javax.swing.JFrame {
             if (registerFlag) {
                 welcomeLabel.setText("Bienvenido " + control.getP1().getNombre()); //is this ok?
                 card.show(jPanel1, "menu");
-            }else{
+            } else {
                 card.show(jPanel1, "menu");
             }
         } else {
@@ -858,36 +858,49 @@ public class Juego extends javax.swing.JFrame {
                         playerClickFlag = false;//bandera para saber de donde proviene el click
                         hero1Button.doClick();
                         playerClickFlag = true;
+                        AIOniichan.setText("Kirito");
+                        AILevelBar.setValue(45);
+                        AIAttack.setValue(25);
                         hero1Button.setEnabled(false); //deshabilitamos el boton para que el jugador tenga que escoger un heroe distinto a la AI
                         break;
                     case 2:
                         playerClickFlag = false;
                         hero2Button.doClick();
                         playerClickFlag = true;
+                        AIOniichan.setText("Koyomi Araragi");
+                        AILevelBar.setValue(31);
+                        AIAttack.setValue(38);
                         hero2Button.setEnabled(false);
                         break;
                     case 3:
                         playerClickFlag = false;
                         hero3Button.doClick();
                         playerClickFlag = true;
+                        AIOniichan.setText("Todomatsu");
+                        AILevelBar.setValue(36);
+                        AIAttack.setValue(20);
                         hero3Button.setEnabled(false);
                         break;
                     case 4:
                         playerClickFlag = false;
                         hero4Button.doClick();
                         playerClickFlag = true;
+                        AIOniichan.setText("Kyousuke Kousaka");
+                        AILevelBar.setValue(29);
+                        AIAttack.setValue(12);
                         hero4Button.setEnabled(false);
                         break;
                     default:
                         playerClickFlag = false;
                         hero1Button.doClick();
                         playerClickFlag = true;
+
                         hero1Button.setEnabled(false);
                         break;
                 }
             } catch (SQLException ex) {
 
-            }        
+            }
         }
     }//GEN-LAST:event_jugarLabelMouseClicked
 
@@ -899,29 +912,28 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
         // TODO add your handling code here:
-          if (playerClickFlag == true) {
+        if (playerClickFlag == true) {
             control.selectHero(1, 1);
-            
         }
     }//GEN-LAST:event_hero1ButtonMouseClicked
 
     private void hero2ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseClicked
         // TODO add your handling code here:
-         if (playerClickFlag == true) {
+        if (playerClickFlag == true) {
             control.selectHero(1, 2);
         }
     }//GEN-LAST:event_hero2ButtonMouseClicked
 
     private void hero3ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseClicked
         // TODO add your handling code here:
-         if (playerClickFlag == true) {
+        if (playerClickFlag == true) {
             control.selectHero(1, 3);
         }
     }//GEN-LAST:event_hero3ButtonMouseClicked
 
     private void hero4ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseClicked
         // TODO add your handling code here:
-          if (playerClickFlag == true) {
+        if (playerClickFlag == true) {
             control.selectHero(1, 4);
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
@@ -932,32 +944,38 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero1ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseEntered
         // TODO add your handling code here:
-        if(hero1Button.isEnabled()==true){
-        playerOniichan.setText("Kirito");
-        oniiChanPowerLevel.setValue(45);
-        oniichanAttack.setValue(25);
+        if (hero1Button.isEnabled() == true) {
+            playerOniichan.setText("Kirito");
+            oniiChanPowerLevel.setValue(45);
+            oniichanAttack.setValue(25);
         }
     }//GEN-LAST:event_hero1ButtonMouseEntered
 
     private void hero2ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseEntered
         // TODO add your handling code here:
-        playerOniichan.setText("Koyomi Araragi");
-        oniiChanPowerLevel.setValue(31);
-        oniichanAttack.setValue(38);
+        if (hero2Button.isEnabled() == true) {
+            playerOniichan.setText("Koyomi Araragi");
+            oniiChanPowerLevel.setValue(31);
+            oniichanAttack.setValue(38);
+        }
     }//GEN-LAST:event_hero2ButtonMouseEntered
 
     private void hero3ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseEntered
         // TODO add your handling code here:
-        playerOniichan.setText("Todomatsu");
-        oniiChanPowerLevel.setValue(36);
-        oniichanAttack.setValue(20);
+        if (hero3Button.isEnabled() == true) {
+            playerOniichan.setText("Todomatsu");
+            oniiChanPowerLevel.setValue(36);
+            oniichanAttack.setValue(20);
+        }
     }//GEN-LAST:event_hero3ButtonMouseEntered
 
     private void hero4ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseEntered
         // TODO add your handling code here:
-        playerOniichan.setText("Kyousuke Kousaka");
-        oniiChanPowerLevel.setValue(29);
-        oniichanAttack.setValue(12);
+        if (hero4Button.isEnabled() == true) {
+            playerOniichan.setText("Kyousuke Kousaka");
+            oniiChanPowerLevel.setValue(29);
+            oniichanAttack.setValue(12);
+        }
     }//GEN-LAST:event_hero4ButtonMouseEntered
 
     /**
@@ -983,6 +1001,7 @@ public class Juego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar AIAttack;
+    private javax.swing.JProgressBar AILevelBar;
     private javax.swing.JLabel AIOniichan;
     private javax.swing.JLabel AIattack;
     private javax.swing.JButton hero1Button;
@@ -1003,7 +1022,6 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel jugadorRegistrado;
     private javax.swing.JLabel jugarLabel;
     private javax.swing.JLabel jugarLabel1;
