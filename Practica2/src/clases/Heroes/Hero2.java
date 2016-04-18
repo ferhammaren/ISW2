@@ -22,7 +22,7 @@ public class Hero2 extends SuperHeroe {
 
     @Override
     public int patada() {
-        return 10;
+        return 6;
     }
 
     /**
@@ -33,7 +33,7 @@ public class Hero2 extends SuperHeroe {
      */
     @Override
     public int fist() {
-        return 5;
+        return 15;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Hero2 extends SuperHeroe {
      */
     @Override
     public int special() {
-        return 15;
+        return 38;
     }
 
     /**

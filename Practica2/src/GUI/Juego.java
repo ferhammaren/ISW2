@@ -62,11 +62,21 @@ public class Juego extends javax.swing.JFrame {
         registerButton = new javax.swing.JButton();
         limpiarButton = new javax.swing.JButton();
         selectHero = new javax.swing.JPanel();
-        hero4Button = new javax.swing.JToggleButton();
-        hero1Button = new javax.swing.JToggleButton();
-        hero2Button = new javax.swing.JToggleButton();
-        hero3Button = new javax.swing.JToggleButton();
         playButton = new javax.swing.JButton();
+        playerOniichan = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        oniiChanPowerLevel = new javax.swing.JProgressBar();
+        AIOniichan = new javax.swing.JLabel();
+        AIattack = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        hero1Button = new javax.swing.JButton();
+        hero2Button = new javax.swing.JButton();
+        hero3Button = new javax.swing.JButton();
+        hero4Button = new javax.swing.JButton();
+        oniichanAttack = new javax.swing.JProgressBar();
+        AIAttack = new javax.swing.JProgressBar();
         jugadorRegistrado = new javax.swing.JPanel();
         uNInsert2 = new javax.swing.JLabel();
         registerUsername1 = new javax.swing.JTextField();
@@ -299,18 +309,34 @@ public class Juego extends javax.swing.JFrame {
 
         jPanel1.add(nuevoJugador, "nuevoJugador");
 
-        hero4Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/kyousuke.jpg"))); // NOI18N
-        hero4Button.setToolTipText("");
-        hero4Button.addMouseListener(new java.awt.event.MouseAdapter() {
+        selectHero.setPreferredSize(new java.awt.Dimension(950, 600));
+
+        playButton.setText("Jugar");
+        playButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hero4ButtonMouseClicked(evt);
+                playButtonMouseClicked(evt);
             }
         });
+
+        playerOniichan.setText("playerOnii-chan");
+
+        jLabel6.setText("Special Attack:");
+
+        jLabel7.setText("Power Level");
+
+        AIOniichan.setText("AIOniichan");
+
+        AIattack.setText("Special Attack");
+
+        jLabel5.setText("Power Level");
 
         hero1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/kirito.png"))); // NOI18N
         hero1Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hero1ButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hero1ButtonMouseEntered(evt);
             }
         });
         hero1Button.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +350,9 @@ public class Juego extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hero2ButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hero2ButtonMouseEntered(evt);
+            }
         });
 
         hero3Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/osomatsu.jpg"))); // NOI18N
@@ -331,12 +360,18 @@ public class Juego extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hero3ButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hero3ButtonMouseEntered(evt);
+            }
         });
 
-        playButton.setText("Jugar");
-        playButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        hero4Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/kyousuke.jpg"))); // NOI18N
+        hero4Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                playButtonMouseClicked(evt);
+                hero4ButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hero4ButtonMouseEntered(evt);
             }
         });
 
@@ -345,34 +380,80 @@ public class Juego extends javax.swing.JFrame {
         selectHeroLayout.setHorizontalGroup(
             selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectHeroLayout.createSequentialGroup()
-                .addGap(274, 274, 274)
-                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(hero1Button, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(113, 113, 113)
+                .addGap(63, 63, 63)
                 .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(244, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(playerOniichan)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(oniiChanPowerLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oniichanAttack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hero3Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hero1Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(playButton)
-                .addGap(416, 416, 416))
+                .addGap(18, 18, 18)
+                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
+                        .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AIattack)
+                            .addComponent(jLabel5)
+                            .addComponent(AIOniichan))
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
+                        .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(AIAttack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))))
         );
         selectHeroLayout.setVerticalGroup(
             selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectHeroLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hero1Button, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hero3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(playButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(selectHeroLayout.createSequentialGroup()
+                        .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(selectHeroLayout.createSequentialGroup()
+                                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(hero2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hero1Button, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(hero3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hero4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(selectHeroLayout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addGroup(selectHeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(selectHeroLayout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(AIOniichan)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(AIattack)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(AIAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(selectHeroLayout.createSequentialGroup()
+                                        .addComponent(playerOniichan)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(oniichanAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(oniiChanPowerLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectHeroLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(playButton)))
+                .addContainerGap())
         );
 
         jPanel1.add(selectHero, "selectHero");
@@ -710,8 +791,8 @@ public class Juego extends javax.swing.JFrame {
             rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
 
             rankingPlayer5Name.setText(jug.get(4).getNombre());
-           rankingPlayer5Won.setText(jug.get(4).getGanados()+"");
-           rankingPlayer5Lost.setText(jug.get(4).getJugados()-jug.get(4).getGanados()+"");
+            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
             // </editor-fold>
         } catch (SQLException ex) {
             Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
@@ -799,35 +880,41 @@ public class Juego extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
 
-            }
-
+            }        
         }
     }//GEN-LAST:event_jugarLabelMouseClicked
 
+    private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
+        // TODO add your handling code here:
+        card = (CardLayout) jPanel1.getLayout();
+        card.show(jPanel1, "play");
+    }//GEN-LAST:event_playButtonMouseClicked
+
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
         // TODO add your handling code here:
-        if (playerClickFlag == true) {
+          if (playerClickFlag == true) {
             control.selectHero(1, 1);
+            
         }
     }//GEN-LAST:event_hero1ButtonMouseClicked
 
     private void hero2ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseClicked
         // TODO add your handling code here:
-        if (playerClickFlag == true) {
+         if (playerClickFlag == true) {
             control.selectHero(1, 2);
         }
     }//GEN-LAST:event_hero2ButtonMouseClicked
 
     private void hero3ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseClicked
         // TODO add your handling code here:
-        if (playerClickFlag == true) {
+         if (playerClickFlag == true) {
             control.selectHero(1, 3);
         }
     }//GEN-LAST:event_hero3ButtonMouseClicked
 
     private void hero4ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseClicked
         // TODO add your handling code here:
-        if (playerClickFlag == true) {
+          if (playerClickFlag == true) {
             control.selectHero(1, 4);
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
@@ -836,11 +923,33 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hero1ButtonActionPerformed
 
-    private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
+    private void hero1ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseEntered
         // TODO add your handling code here:
-        card = (CardLayout) jPanel1.getLayout();
-        card.show(jPanel1, "play");
-    }//GEN-LAST:event_playButtonMouseClicked
+        playerOniichan.setText("Kirito");
+        oniiChanPowerLevel.setValue(45);
+        oniichanAttack.setValue(25);
+    }//GEN-LAST:event_hero1ButtonMouseEntered
+
+    private void hero2ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseEntered
+        // TODO add your handling code here:
+         playerOniichan.setText("Koyomi Araragi");
+        oniiChanPowerLevel.setValue(31);
+        oniichanAttack.setValue(38);
+    }//GEN-LAST:event_hero2ButtonMouseEntered
+
+    private void hero3ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseEntered
+        // TODO add your handling code here:
+        playerOniichan.setText("Todomatsu");
+        oniiChanPowerLevel.setValue(36);
+        oniichanAttack.setValue(20);
+    }//GEN-LAST:event_hero3ButtonMouseEntered
+
+    private void hero4ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseEntered
+        // TODO add your handling code here:
+        playerOniichan.setText("Kyousuke Kousaka");
+        oniiChanPowerLevel.setValue(29);
+        oniichanAttack.setValue(12);
+    }//GEN-LAST:event_hero4ButtonMouseEntered
 
     /**
      * @param args the command line arguments
@@ -864,21 +973,28 @@ public class Juego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton hero1Button;
-    private javax.swing.JToggleButton hero2Button;
-    private javax.swing.JToggleButton hero3Button;
-    private javax.swing.JToggleButton hero4Button;
+    private javax.swing.JProgressBar AIAttack;
+    private javax.swing.JLabel AIOniichan;
+    private javax.swing.JLabel AIattack;
+    private javax.swing.JButton hero1Button;
+    private javax.swing.JButton hero2Button;
+    private javax.swing.JButton hero3Button;
+    private javax.swing.JButton hero4Button;
     private javax.swing.JPanel instrucciones;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel jugadorRegistrado;
     private javax.swing.JLabel jugarLabel;
     private javax.swing.JLabel jugarLabel1;
@@ -887,8 +1003,11 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel menu;
     private javax.swing.JPanel nuevoJugador;
     private javax.swing.JLabel nuevoLabel;
+    private javax.swing.JProgressBar oniiChanPowerLevel;
+    private javax.swing.JProgressBar oniichanAttack;
     private javax.swing.JPanel play;
     private javax.swing.JButton playButton;
+    private javax.swing.JLabel playerOniichan;
     private javax.swing.JPanel ranking;
     private javax.swing.JLabel rankingLabel;
     private javax.swing.JLabel rankingPlayer1Lost;

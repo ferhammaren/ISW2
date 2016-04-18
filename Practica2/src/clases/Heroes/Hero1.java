@@ -35,7 +35,7 @@ public class Hero1 extends SuperHeroe {
      */
     @Override
     public int fist() {
-        return 5;
+        return 10;
     }
 
     /**
@@ -46,7 +46,7 @@ public class Hero1 extends SuperHeroe {
      */
     @Override
     public int special() {
-        return 15;
+        return 25;
     }
 
     /**
