@@ -21,7 +21,7 @@ import java.sql.ResultSet;
  *
  * @author Fer
  */
-public class Practica2 {
+public class sandbox {
 
     /**
      * @param args the command line arguments

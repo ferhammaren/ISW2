@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import manejadores.JuegoControl;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -25,6 +26,7 @@ public class Juego extends javax.swing.JFrame {
     private CardLayout card;
     private boolean registerFlag = false;
     private boolean playerClickFlag;
+    private int p1H,p2H; //variables para saber que imagenes vamos a usar en el juego
 
     /**
      * Creates new form Juego
@@ -245,10 +247,14 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(rankingLabel)
                 .addGap(18, 18, 18)
                 .addComponent(salirLabel)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         jPanel1.add(menu, "menu");
+
+        p1Oniichan.setText("jo");
+
+        p2Oniichan.setPreferredSize(new java.awt.Dimension(10, 10));
 
         playKick1.setText("Ataque 1");
 
@@ -280,12 +286,6 @@ public class Juego extends javax.swing.JFrame {
         play.setLayout(playLayout);
         playLayout.setHorizontalGroup(
             playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(playLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(p1Oniichan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(p2Oniichan)
-                .addGap(127, 127, 127))
             .addGroup(playLayout.createSequentialGroup()
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(playLayout.createSequentialGroup()
@@ -329,10 +329,17 @@ public class Juego extends javax.swing.JFrame {
                         .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(131, 131, 131))
             .addGroup(playLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(p1Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(525, 525, 525)
+                        .addComponent(p2Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         playLayout.setVerticalGroup(
@@ -348,11 +355,11 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(p1Health, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(p2Health, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(159, 159, 159)
+                .addGap(171, 171, 171)
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(p1Oniichan)
-                    .addComponent(p2Oniichan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                    .addComponent(p1Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(p2Oniichan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playLayout.createSequentialGroup()
                         .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -456,7 +463,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(registerButton)
                     .addComponent(limpiarButton)
                     .addComponent(registerBack))
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(407, Short.MAX_VALUE))
         );
 
         jPanel1.add(nuevoJugador, "nuevoJugador");
@@ -699,7 +706,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(registeredClean)
                     .addComponent(login)
                     .addComponent(registeredBack))
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
 
         jPanel1.add(jugadorRegistrado, "jugadorRegistrado");
@@ -824,7 +831,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(rankingPlayer5Name)
                     .addComponent(rankingPlayer5Won)
                     .addComponent(rankingPlayer5Lost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(65, 65, 65))
         );
@@ -839,7 +846,7 @@ public class Juego extends javax.swing.JFrame {
         );
         instruccionesLayout.setVerticalGroup(
             instruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 652, Short.MAX_VALUE)
         );
 
         jPanel1.add(instrucciones, "instrucciones");
@@ -1019,6 +1026,7 @@ public class Juego extends javax.swing.JFrame {
                 AIselectedHero = control.selectHero(2, 0);
                 switch (AIselectedHero) {
                     case 1:
+                        p2H=1;
                         playerClickFlag = false;//bandera para saber de donde proviene el click
                         hero1Button.doClick();
                         playerClickFlag = true;
@@ -1028,6 +1036,7 @@ public class Juego extends javax.swing.JFrame {
                         hero1Button.setEnabled(false); //deshabilitamos el boton para que el jugador tenga que escoger un heroe distinto a la AI
                         break;
                     case 2:
+                        p2H=2;
                         playerClickFlag = false;
                         hero2Button.doClick();
                         playerClickFlag = true;
@@ -1037,6 +1046,7 @@ public class Juego extends javax.swing.JFrame {
                         hero2Button.setEnabled(false);
                         break;
                     case 3:
+                        p2H=3;
                         playerClickFlag = false;
                         hero3Button.doClick();
                         playerClickFlag = true;
@@ -1046,6 +1056,7 @@ public class Juego extends javax.swing.JFrame {
                         hero3Button.setEnabled(false);
                         break;
                     case 4:
+                        p2H=4;
                         playerClickFlag = false;
                         hero4Button.doClick();
                         playerClickFlag = true;
@@ -1055,6 +1066,7 @@ public class Juego extends javax.swing.JFrame {
                         hero4Button.setEnabled(false);
                         break;
                     default:
+                        p2H=1;
                         playerClickFlag = false;
                         hero1Button.doClick();
                         playerClickFlag = true;
@@ -1073,11 +1085,27 @@ public class Juego extends javax.swing.JFrame {
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
         // TODO add your handling code here:
+        ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
         p1Health.setValue(100);
         p2Health.setValue(100);
-        
+       switch(p1H){ //asignamos las imagenes
+           case 1:
+               image=new ImageIcon(getClass().getResource("GUI//images//oniichan//kirito//kiritoIdle.png"));
+               p1Oniichan.setIcon(image);
+               p1Oniichan.repaint();
+               break;
+           case 2:
+               image=new ImageIcon(getClass().getResource("GUI//images//oniichan//koyomi//koyomiIdle.png"));
+               p1Oniichan.setIcon(image);
+               p1Oniichan.repaint();
+               break;
+           case 3:
+               break;
+           case 4:
+               break;
+       }
         
     }//GEN-LAST:event_playButtonMouseClicked
 
@@ -1085,6 +1113,7 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (playerClickFlag == true) {
             control.selectHero(1, 1);
+            p1H=1;
         }
     }//GEN-LAST:event_hero1ButtonMouseClicked
 
@@ -1092,6 +1121,7 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (playerClickFlag == true) {
             control.selectHero(1, 2);
+            p1H=1;
         }
     }//GEN-LAST:event_hero2ButtonMouseClicked
 
@@ -1099,6 +1129,7 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (playerClickFlag == true) {
             control.selectHero(1, 3);
+            p1H=3;
         }
     }//GEN-LAST:event_hero3ButtonMouseClicked
 
@@ -1106,6 +1137,7 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (playerClickFlag == true) {
             control.selectHero(1, 4);
+            p1H=4;
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
 

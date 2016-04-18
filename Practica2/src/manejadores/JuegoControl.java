@@ -8,6 +8,7 @@ package manejadores;
 import clases.DataAccess;
 import clases.Juego;
 import clases.Jugador;
+import clases.SuperHeroe;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -58,9 +59,9 @@ public class JuegoControl {
        return manJuego.seleccionarHeroe(playerNumber, selectedHero, isAi);
     }
 
-    public Jugador jugar() {
-        return j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
-    }
+////    public Jugador jugar() {
+////        return j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
+////    }
 
     /**
      *
@@ -75,21 +76,29 @@ public class JuegoControl {
         p2.setAi(true);
     }
     
+    public SuperHeroe getHero1(){
+        return manJuego.hero1;
+    }
+    
+    public SuperHeroe getHero2(){
+        return manJuego.hero2;
+    }
+    
     public Jugador getP1() {
         return p1;
     }
 
-    public void setP1(Jugador p1) {
-        this.p1 = p1;
-    }
+//    public void setP1(Jugador p1) {
+//        this.p1 = p1;
+//    }
 
-    public Jugador getP2() {
-        return p2;
-    }
-
-    public void setP2(Jugador p2) {
-        this.p2 = p2;
-    }
+//    public Jugador getP2() {
+//        return p2;
+//    }
+//
+//    public void setP2(Jugador p2) {
+//        this.p2 = p2;
+//    }
 
     
 }
