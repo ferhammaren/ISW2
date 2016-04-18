@@ -257,6 +257,11 @@ public class Juego extends javax.swing.JFrame {
         p2Oniichan.setPreferredSize(new java.awt.Dimension(10, 10));
 
         playKick1.setText("Ataque 1");
+        playKick1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                playKick1MouseClicked(evt);
+            }
+        });
 
         playFist1.setText("Ataque 2");
 
@@ -1085,7 +1090,6 @@ public class Juego extends javax.swing.JFrame {
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
         // TODO add your handling code here:
-
         ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
@@ -1093,7 +1097,8 @@ public class Juego extends javax.swing.JFrame {
         p1Health.setValue(control.getHero1().getEnergia());
         p2Health.setMaximum(control.getHero2().getEnergia());
         p2Health.setValue(control.getHero1().getEnergia());
-        switch (p1H) { //asignamos las imagenes
+        // <editor-fold defaultstate="collapsed" desc="Asignacion de las imagenes del principio"> 
+        switch (p1H) {
             case 1:
                 image = new ImageIcon("\\images\\oniichan\\kirito\\kiritoIdle.png");
                 p1Oniichan.setIcon(image);
@@ -1109,7 +1114,21 @@ public class Juego extends javax.swing.JFrame {
             case 4:
                 break;
         }
-
+        
+        switch(p2H){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
+         // </editor-fold>
+         
+         
+         
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
@@ -1221,6 +1240,16 @@ public class Juego extends javax.swing.JFrame {
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "menu");
     }//GEN-LAST:event_registerBackMouseClicked
+
+    private void playKick1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playKick1MouseClicked
+        // TODO add your handling code here
+        if(control.kick(1)>0){
+            p1Special.setValue(control.getHero1().getSpecialMeter());
+            p1Special.repaint();
+            p2Health.setValue(control.getHero2().getEnergia());
+            p1Special.repaint();
+        }
+    }//GEN-LAST:event_playKick1MouseClicked
 
     /**
      * @param args the command line arguments

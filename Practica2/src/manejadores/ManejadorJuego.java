@@ -17,7 +17,7 @@ import java.util.Random;
 public class ManejadorJuego {
 
     SuperHeroe hero1, hero2; //jero1 es el heroe de jugador 1, heroe2 es el heroe de jugador 2
-
+Random x=new Random();
     public ManejadorJuego() {
     }
 
@@ -35,23 +35,23 @@ public class ManejadorJuego {
                 // <editor-fold defaultstate="collapsed" desc="Si el jugador 1 no es AI se ejecuta esto"> 
                 switch (b) {
                     case 1:
-                        hero1 = new Hero1(10);
+                        hero1 = new Hero1(250);
                         selected = 1;
                         break;
                     case 2:
-                        hero1 = new Hero2(20);
+                        hero1 = new Hero2(150);
                         selected = 2;
                         break;
                     case 3:
-                        hero1 = new Hero3(30);
+                        hero1 = new Hero3(100);
                         selected = 3;
                         break;
                     case 4:
-                        hero1 = new Hero4(50);
+                        hero1 = new Hero4(100);
                         selected = 4;
                         break;
                     default:
-                        hero1 = new Hero1(10);
+                        hero1 = new Hero1(250);
                         selected = 1;
                         break;
                 }
@@ -62,23 +62,23 @@ public class ManejadorJuego {
                 Random x = new Random();
                 hero = x.nextInt(4);
                 if (hero < 1) {
-                    hero1 = new Hero1(10);
+                    hero1 = new Hero1(250);
                 } else {
                     switch (b) {
                         case 1:
-                            hero1 = new Hero1(10);
+                            hero1 = new Hero1(250);
                             break;
                         case 2:
-                            hero1 = new Hero2(20);
+                             hero1 = new Hero2(150);
                             break;
                         case 3:
-                            hero1 = new Hero3(30);
+                             hero1 = new Hero3(100);
                             break;
                         case 4:
-                            hero1 = new Hero4(50);
+                          hero1 = new Hero4(100);
                             break;
                         default:
-                            hero1 = new Hero1(10);
+                             hero1 = new Hero1(250);
                             break;
                     }
                 }
@@ -90,24 +90,24 @@ public class ManejadorJuego {
             if (!isAi) {
                 switch (b) {
                     case 1:
-                        hero2 = new Hero1(10);
+                        hero2 = new Hero1(250);
                         selected = 1;
                         break;
                     case 2:
-                        hero2 = new Hero2(20);
+                        hero2 = new Hero2(150);
                         selected = 2;
                         break;
                     case 3:
-                        hero2 = new Hero3(30);
+                        hero2 = new Hero3(100);
                         ;
                         selected = 3;
                         break;
                     case 4:
-                        hero2 = new Hero4(50);
+                        hero2 = new Hero3(100);
                         selected = 4;
                         break;
                     default:
-                        hero2 = new Hero1(10);
+                        hero2 = new Hero1(250);
                         selected = 1;
                         break;
                 }
@@ -143,26 +143,62 @@ public class ManejadorJuego {
         selected = hero;
         return selected;       
     }    
-
-    
-    
-    public int getSpMeter(){
-        int meter=0;
-        return meter;
+ 
+    public int getSpMeter(int hero){
+        if(hero==1){
+            return hero1.getSpecialMeter();
+        }else{
+           return hero2.getSpecialMeter(); 
+        }
     }
     
-    public int getPlayersEnergy(){
-        int a=0;
-        return a;
+    public int getPlayersEnergy(int hero){
+       if(hero==1){
+            return hero1.getEnergia();
+        }else{
+           return hero2.getEnergia(); 
+        }
     }
     
-    public void kick(int player){
-        
+    public int kick(int player){
+        if(player==1){
+            hero2.setEnergia(hero2.getEnergia()-hero1.patada());           
+            hero1.setSpecialMeter(x.nextInt(hero1.patada()));
+            return hero2.getEnergia();
+        }else{
+            hero1.setEnergia(hero1.getEnergia()-hero2.patada());
+            hero2.setSpecialMeter(x.nextInt(hero2.patada()));
+            return hero1.getEnergia();
+        }
     }
-    public void fist(int player){
-        
+    public int fist(int player){
+        if(player==1){
+            hero2.setEnergia(hero2.getEnergia()-hero1.fist());
+            hero1.setSpecialMeter(x.nextInt(hero1.fist()));
+            return hero2.getEnergia();
+        }else{
+            hero1.setEnergia(hero1.getEnergia()-hero2.fist());
+            hero2.setSpecialMeter(x.nextInt(hero2.fist()));
+            return hero1.getEnergia();
+        }
     }
-    public void special(int player){
-        
+    public int special(int player){
+        if(player==1){
+            if(hero1.getSpecialMeter()>=hero1.special()){
+                hero2.setEnergia(hero2.getEnergia()-hero1.special());
+                hero1.setSpecialMeter(0);
+                return hero2.getEnergia();
+            }else{
+                 return hero2.getEnergia();
+            }
+        }else{
+            if(hero2.getSpecialMeter()>=hero2.special()){
+                hero1.setEnergia(hero1.getEnergia()-hero2.special());
+                hero2.setSpecialMeter(0);
+                return hero1.getEnergia();
+            }else{
+                 return hero2.getEnergia();
+            }
+        }
     }
 }

@@ -59,6 +59,17 @@ public class JuegoControl {
        return manJuego.seleccionarHeroe(playerNumber, selectedHero, isAi);
     }
 
+    public int fist(int player){
+       return manJuego.fist(player);
+    }
+    
+    public int kick(int player){
+        return manJuego.kick(player);
+    }
+    
+    public int special(int player){
+        return manJuego.special(player);
+    }
 ////    public Jugador jugar() {
 ////        return j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
 ////    }
@@ -83,6 +94,7 @@ public class JuegoControl {
     public SuperHeroe getHero2(){
         return manJuego.hero2;
     }
+    
     
     public Jugador getP1() {
         return p1;
