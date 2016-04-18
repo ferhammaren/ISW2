@@ -279,24 +279,30 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="uNInsert" min="-2" max="-2" attributes="0"/>
-                          <Component id="uNInsert1" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="uNInsert" min="-2" max="-2" attributes="0"/>
+                                  <Component id="uNInsert1" min="-2" pref="201" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="registerBack" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="limpiarButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="30" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="registerUsername" pref="196" max="32767" attributes="0"/>
-                          <Component id="registerPassword" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="registerButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="registerUsername" pref="196" max="32767" attributes="0"/>
+                              <Component id="registerPassword" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="limpiarButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="registerButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="405" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -317,6 +323,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="registerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="limpiarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="registerBack" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="364" max="32767" attributes="0"/>
                   </Group>
@@ -359,6 +366,16 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="limpiarButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="registerBack">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
+                <Property name="name" type="java.lang.String" value="registerBack" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registerBackMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerBackActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
