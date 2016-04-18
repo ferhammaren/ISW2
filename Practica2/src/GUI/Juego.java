@@ -77,8 +77,24 @@ public class Juego extends javax.swing.JFrame {
         registeredBack = new javax.swing.JButton();
         ranking = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        rankArea = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        rankingPlayer1Name = new javax.swing.JLabel();
+        rankingPlayer1Won = new javax.swing.JLabel();
+        rankingPlayer1Lost = new javax.swing.JLabel();
+        rankingPlayer2Name = new javax.swing.JLabel();
+        rankingPlayer3Name = new javax.swing.JLabel();
+        rankingPlayer4Name = new javax.swing.JLabel();
+        rankingPlayer5Name = new javax.swing.JLabel();
+        rankingPlayer2Won = new javax.swing.JLabel();
+        rankingPlayer3Won = new javax.swing.JLabel();
+        rankingPlayer4Won = new javax.swing.JLabel();
+        rankingPlayer5Won = new javax.swing.JLabel();
+        rankingPlayer2Lost = new javax.swing.JLabel();
+        rankingPlayer3Lost = new javax.swing.JLabel();
+        rankingPlayer4Lost = new javax.swing.JLabel();
+        rankingPlayer5Lost = new javax.swing.JLabel();
         instrucciones = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -450,30 +466,120 @@ public class Juego extends javax.swing.JFrame {
             }
         });
 
-        rankArea.setEditable(false);
-        rankArea.setColumns(20);
-        rankArea.setRows(5);
-        jScrollPane1.setViewportView(rankArea);
+        jLabel2.setText("Jugador");
+
+        jLabel3.setText("Juegos Ganados");
+
+        jLabel4.setText("Juegos Perdidos");
+
+        rankingPlayer1Name.setText("player1Name");
+
+        rankingPlayer1Won.setText("Player1Won");
+
+        rankingPlayer1Lost.setText("jLabel5");
+
+        rankingPlayer2Name.setText("jLabel5");
+
+        rankingPlayer3Name.setText("jLabel6");
+
+        rankingPlayer4Name.setText("jLabel7");
+
+        rankingPlayer5Name.setText("jLabel8");
+
+        rankingPlayer2Won.setText("jLabel9");
+
+        rankingPlayer3Won.setText("jLabel10");
+
+        rankingPlayer4Won.setText("jLabel11");
+
+        rankingPlayer5Won.setText("jLabel12");
+
+        rankingPlayer2Lost.setText("jLabel13");
+
+        rankingPlayer3Lost.setText("jLabel6");
+
+        rankingPlayer4Lost.setText("jLabel7");
+
+        rankingPlayer5Lost.setText("jLabel8");
 
         javax.swing.GroupLayout rankingLayout = new javax.swing.GroupLayout(ranking);
         ranking.setLayout(rankingLayout);
         rankingLayout.setHorizontalGroup(
             rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rankingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(837, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(54, 54, 54))
             .addGroup(rankingLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addGap(129, 129, 129)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rankingPlayer1Name)
+                    .addGroup(rankingLayout.createSequentialGroup()
+                        .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(rankingLayout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(24, 24, 24))
+                                .addComponent(rankingPlayer3Name, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rankingPlayer4Name, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rankingPlayer5Name, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(rankingPlayer2Name))
+                        .addGap(125, 125, 125)
+                        .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rankingPlayer2Won)
+                            .addComponent(rankingPlayer1Won)
+                            .addComponent(jLabel3)
+                            .addComponent(rankingPlayer4Won)
+                            .addComponent(rankingPlayer3Won)
+                            .addComponent(rankingPlayer5Won))))
+                .addGap(121, 121, 121)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rankingPlayer2Lost)
+                    .addComponent(jLabel4)
+                    .addComponent(rankingPlayer3Lost)
+                    .addComponent(rankingPlayer4Lost)
+                    .addComponent(rankingPlayer5Lost)
+                    .addComponent(rankingPlayer1Lost))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         rankingLayout.setVerticalGroup(
             rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rankingLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rankingPlayer1Won)
+                    .addComponent(rankingPlayer1Name)
+                    .addComponent(rankingPlayer1Lost))
+                .addGap(36, 36, 36)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rankingPlayer2Name)
+                    .addComponent(rankingPlayer2Won)
+                    .addComponent(rankingPlayer2Lost))
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(rankingLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(rankingPlayer3Lost))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rankingLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rankingPlayer3Name)
+                            .addComponent(rankingPlayer3Won))))
+                .addGap(28, 28, 28)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rankingPlayer4Won)
+                    .addComponent(rankingPlayer4Lost)
+                    .addComponent(rankingPlayer4Name))
+                .addGap(30, 30, 30)
+                .addGroup(rankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rankingPlayer5Name)
+                    .addComponent(rankingPlayer5Won)
+                    .addComponent(rankingPlayer5Lost))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(65, 65, 65))
         );
@@ -578,13 +684,35 @@ public class Juego extends javax.swing.JFrame {
             // TODO add your handling code here:
             //String rank = "";
             // jLabel2.setText("");
-            rankArea.setText("");
+            // rankArea.setText("");
             ArrayList<Jugador> jug = control.getRanking();
-            for (int i = 0; i < jug.size(); i++) {
-                rankArea.append(jug.get(i).toString());
-                //rank += jug.get(i).toString();
-            }
+////            for (int i = 0; i < jug.size(); i++) {
+            // rankArea.append(jug.get(i).toString());
+            //rank += jug.get(i).toString();
+//            }
             //jLabel2.setText(rank);
+
+            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+            rankingPlayer1Name.setText(jug.get(0).getNombre());
+            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+            rankingPlayer2Name.setText(jug.get(1).getNombre());
+            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+            rankingPlayer3Name.setText(jug.get(2).getNombre());
+            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+            rankingPlayer4Name.setText(jug.get(3).getNombre());
+            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+            rankingPlayer5Name.setText(jug.get(4).getNombre());
+           rankingPlayer5Won.setText(jug.get(4).getGanados()+"");
+           rankingPlayer5Lost.setText(jug.get(4).getJugados()-jug.get(4).getGanados()+"");
+            // </editor-fold>
         } catch (SQLException ex) {
             Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -678,28 +806,28 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
         // TODO add your handling code here:
-        if(playerClickFlag==true){
+        if (playerClickFlag == true) {
             control.selectHero(1, 1);
         }
     }//GEN-LAST:event_hero1ButtonMouseClicked
 
     private void hero2ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseClicked
         // TODO add your handling code here:
-         if(playerClickFlag==true){
+        if (playerClickFlag == true) {
             control.selectHero(1, 2);
         }
     }//GEN-LAST:event_hero2ButtonMouseClicked
 
     private void hero3ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseClicked
         // TODO add your handling code here:
-         if(playerClickFlag==true){
+        if (playerClickFlag == true) {
             control.selectHero(1, 3);
         }
     }//GEN-LAST:event_hero3ButtonMouseClicked
 
     private void hero4ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseClicked
         // TODO add your handling code here:
-         if(playerClickFlag==true){
+        if (playerClickFlag == true) {
             control.selectHero(1, 4);
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
@@ -710,6 +838,8 @@ public class Juego extends javax.swing.JFrame {
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
         // TODO add your handling code here:
+        card = (CardLayout) jPanel1.getLayout();
+        card.show(jPanel1, "play");
     }//GEN-LAST:event_playButtonMouseClicked
 
     /**
@@ -741,12 +871,14 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel instrucciones;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jugadorRegistrado;
     private javax.swing.JLabel jugarLabel;
     private javax.swing.JLabel jugarLabel1;
@@ -757,9 +889,23 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel nuevoLabel;
     private javax.swing.JPanel play;
     private javax.swing.JButton playButton;
-    private javax.swing.JTextArea rankArea;
     private javax.swing.JPanel ranking;
     private javax.swing.JLabel rankingLabel;
+    private javax.swing.JLabel rankingPlayer1Lost;
+    private javax.swing.JLabel rankingPlayer1Name;
+    private javax.swing.JLabel rankingPlayer1Won;
+    private javax.swing.JLabel rankingPlayer2Lost;
+    private javax.swing.JLabel rankingPlayer2Name;
+    private javax.swing.JLabel rankingPlayer2Won;
+    private javax.swing.JLabel rankingPlayer3Lost;
+    private javax.swing.JLabel rankingPlayer3Name;
+    private javax.swing.JLabel rankingPlayer3Won;
+    private javax.swing.JLabel rankingPlayer4Lost;
+    private javax.swing.JLabel rankingPlayer4Name;
+    private javax.swing.JLabel rankingPlayer4Won;
+    private javax.swing.JLabel rankingPlayer5Lost;
+    private javax.swing.JLabel rankingPlayer5Name;
+    private javax.swing.JLabel rankingPlayer5Won;
     private javax.swing.JButton registerButton;
     private javax.swing.JPasswordField registerPassword;
     private javax.swing.JPasswordField registerPassword1;
