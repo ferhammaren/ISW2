@@ -384,12 +384,18 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ataque 2"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="playFist1MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="playSpecial1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ataque Especial"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="playSpecial1MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>

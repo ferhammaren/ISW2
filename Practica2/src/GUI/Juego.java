@@ -9,6 +9,7 @@ import clases.Jugador;
 import java.awt.CardLayout;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -26,6 +27,7 @@ public class Juego extends javax.swing.JFrame {
     private CardLayout card;
     private boolean registerFlag = false;
     private boolean playerClickFlag;
+    private Random a = new Random();
     private int p1H, p2H; //variables para saber que imagenes vamos a usar en el juego
 
     /**
@@ -264,9 +266,19 @@ public class Juego extends javax.swing.JFrame {
         });
 
         playFist1.setText("Ataque 2");
+        playFist1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                playFist1MouseClicked(evt);
+            }
+        });
 
         playSpecial1.setText("Ataque Especial");
         playSpecial1.setEnabled(false);
+        playSpecial1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                playSpecial1MouseClicked(evt);
+            }
+        });
 
         jLabel10.setText("Health");
 
@@ -1097,6 +1109,14 @@ public class Juego extends javax.swing.JFrame {
         p1Health.setValue(control.getHero1().getEnergia());
         p2Health.setMaximum(control.getHero2().getEnergia());
         p2Health.setValue(control.getHero1().getEnergia());
+        p1Special.setMaximum(control.getHero1().special());
+        p1Special.setValue(0);
+        p2Special.setMaximum(control.getHero1().special());
+        p2Special.setValue(0);
+        p1Health.repaint();
+        p2Health.repaint();
+        p1Special.repaint();
+        p2Special.repaint();
         // <editor-fold defaultstate="collapsed" desc="Asignacion de las imagenes del principio"> 
         switch (p1H) {
             case 1:
@@ -1114,8 +1134,8 @@ public class Juego extends javax.swing.JFrame {
             case 4:
                 break;
         }
-        
-        switch(p2H){
+
+        switch (p2H) {
             case 1:
                 break;
             case 2:
@@ -1125,10 +1145,9 @@ public class Juego extends javax.swing.JFrame {
             case 4:
                 break;
         }
-         // </editor-fold>
-         
-         
-         
+        // </editor-fold>
+
+
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
@@ -1243,13 +1262,206 @@ public class Juego extends javax.swing.JFrame {
 
     private void playKick1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playKick1MouseClicked
         // TODO add your handling code here
-        if(control.kick(1)>0){
+        int sw = 1;
+        if (control.kick(1) > 0) {
             p1Special.setValue(control.getHero1().getSpecialMeter());
             p1Special.repaint();
             p2Health.setValue(control.getHero2().getEnergia());
-            p1Special.repaint();
+            p2Health.repaint();
+            if (p1Special.getValue() < control.getHero1().special() / 2) {
+                playSpecial1.setEnabled(true);
+            }
+
+            //<editor-fold desc="Seleccion de comando de la AI">
+            sw = a.nextInt(3);
+            if (sw < 1) {
+                sw = 1;
+            }
+            switch (sw) {
+                case 1:
+                    if (control.kick(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                            playSpecial2.setEnabled(true);
+                        }
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+                case 2:
+                    if (control.fist(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                            playSpecial2.setEnabled(true);
+                        }
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+                case 3:
+                    if (control.special(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+
+                        playSpecial2.setEnabled(false);
+
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+            }
+            //</editor-fold>
+
+        } else {
+            //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
         }
     }//GEN-LAST:event_playKick1MouseClicked
+
+    private void playFist1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playFist1MouseClicked
+        // TODO add your handling code here:
+        int sw = 1;
+        if (control.fist((1)) > 0) {
+            p1Special.setValue(control.getHero1().getSpecialMeter());
+            p1Special.repaint();
+            if (p1Special.getValue() < control.getHero1().special() / 2) {
+                playSpecial1.setEnabled(true);
+            }
+            p2Health.setValue(control.getHero2().getEnergia());
+            p2Health.repaint();
+
+            //<editor-fold desc="Seleccion de comando de la AI">
+            sw = a.nextInt(3);
+            if (sw < 1) {
+                sw = 1;
+            }
+            switch (sw) {
+                case 1:
+                    if (control.kick(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                            playSpecial2.setEnabled(true);
+                        }
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+                case 2:
+                    if (control.fist(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                            playSpecial2.setEnabled(true);
+                        }
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+                case 3:
+                    if (control.special(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+
+                        playSpecial2.setEnabled(false);
+
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+            }
+            //</editor-fold>
+
+        } else {
+            //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
+        }
+    }//GEN-LAST:event_playFist1MouseClicked
+
+    private void playSpecial1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playSpecial1MouseClicked
+        // TODO add your handling code here:
+        int sw = 1;
+        if (control.special((1)) > 0) {
+            p1Special.setValue(control.getHero1().getSpecialMeter());
+            p1Special.repaint();
+            p2Health.setValue(control.getHero2().getEnergia());
+            p2Health.repaint();
+
+            playSpecial2.setEnabled(false);
+
+            //<editor-fold desc="Seleccion de comando de la AI">
+            sw = a.nextInt(3);
+            if (sw < 1) {
+                sw = 1;
+            }
+            switch (sw) {
+                case 1:
+                    if (control.fist(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+                case 2:
+                    if (control.fist(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+                case 3:
+                    if (control.special(2) > 0) {
+                        p2Special.setValue(control.getHero2().getSpecialMeter());
+                        p2Special.repaint();
+                        p1Health.setValue(control.getHero1().getEnergia());
+                        p1Health.repaint();
+                    } else {
+                        //poner dialogo de que se termino el juego, 
+                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+                        //1 con jugados+1
+                    }
+                    break;
+            }
+            //</editor-fold>
+
+        } else {
+            //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
+        }
+    }//GEN-LAST:event_playSpecial1MouseClicked
 
     /**
      * @param args the command line arguments
