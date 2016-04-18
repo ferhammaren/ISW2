@@ -60,18 +60,18 @@ public class Juego extends javax.swing.JFrame {
         playFist1 = new javax.swing.JButton();
         playSpecial1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        p1Health = new javax.swing.JProgressBar();
         jLabel8 = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jProgressBar2 = new javax.swing.JProgressBar();
+        p2Health = new javax.swing.JProgressBar();
         jLabel9 = new javax.swing.JLabel();
-        jProgressBar3 = new javax.swing.JProgressBar();
+        p1Special = new javax.swing.JProgressBar();
         playKick2 = new javax.swing.JButton();
         playFist2 = new javax.swing.JButton();
         playSpecial2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jProgressBar4 = new javax.swing.JProgressBar();
+        p2Special = new javax.swing.JProgressBar();
         nuevoJugador = new javax.swing.JPanel();
         uNInsert = new javax.swing.JLabel();
         uNInsert1 = new javax.swing.JLabel();
@@ -294,7 +294,7 @@ public class Juego extends javax.swing.JFrame {
                             .addGroup(playLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(p1Health, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel11))
                             .addGroup(playLayout.createSequentialGroup()
@@ -319,20 +319,20 @@ public class Juego extends javax.swing.JFrame {
                     .addGroup(playLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(p2Health, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(playLayout.createSequentialGroup()
                                 .addComponent(playFist2)
                                 .addGap(18, 18, 18)
                                 .addComponent(playSpecial2))))
                     .addGroup(playLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(131, 131, 131))
             .addGroup(playLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         playLayout.setVerticalGroup(
@@ -345,9 +345,9 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(p1Health, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(p2Health, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(159, 159, 159)
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p1Oniichan)
@@ -368,11 +368,11 @@ public class Juego extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel12)
-                            .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1)))
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
         );
 
@@ -1075,6 +1075,10 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
+        p1Health.setValue(100);
+        p2Health.setValue(100);
+        
+        
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
@@ -1232,10 +1236,6 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
-    private javax.swing.JProgressBar jProgressBar4;
     private javax.swing.JPanel jugadorRegistrado;
     private javax.swing.JLabel jugarLabel;
     private javax.swing.JLabel jugarLabel1;
@@ -1246,8 +1246,12 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel nuevoLabel;
     private javax.swing.JProgressBar oniiChanPowerLevel;
     private javax.swing.JProgressBar oniichanAttack;
+    private javax.swing.JProgressBar p1Health;
     private javax.swing.JLabel p1Oniichan;
+    private javax.swing.JProgressBar p1Special;
+    private javax.swing.JProgressBar p2Health;
     private javax.swing.JLabel p2Oniichan;
+    private javax.swing.JProgressBar p2Special;
     private javax.swing.JPanel play;
     private javax.swing.JButton playButton;
     private javax.swing.JButton playFist1;
