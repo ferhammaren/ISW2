@@ -461,7 +461,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="playerOniichan">
               <Properties>
-                <Property name="text" type="java.lang.String" value="playerOnii-chan"/>
+                <Property name="text" type="java.lang.String" value="Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">

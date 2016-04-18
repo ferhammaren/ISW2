@@ -318,7 +318,7 @@ public class Juego extends javax.swing.JFrame {
             }
         });
 
-        playerOniichan.setText("playerOnii-chan");
+        playerOniichan.setText("Name");
 
         jLabel6.setText("Special Attack:");
 
@@ -925,9 +925,11 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero1ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseEntered
         // TODO add your handling code here:
+        if(hero1Button.isEnabled()==true){
         playerOniichan.setText("Kirito");
         oniiChanPowerLevel.setValue(45);
         oniichanAttack.setValue(25);
+        }
     }//GEN-LAST:event_hero1ButtonMouseEntered
 
     private void hero2ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseEntered
