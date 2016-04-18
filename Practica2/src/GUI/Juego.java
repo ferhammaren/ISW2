@@ -7,6 +7,7 @@ package GUI;
 
 import clases.Jugador;
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import manejadores.JuegoControl;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 
 /**
@@ -1085,6 +1087,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
         // TODO add your handling code here:
+      
         ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
@@ -1092,12 +1095,12 @@ public class Juego extends javax.swing.JFrame {
         p2Health.setValue(100);
        switch(p1H){ //asignamos las imagenes
            case 1:
-               image=new ImageIcon(getClass().getResource("GUI//images//oniichan//kirito//kiritoIdle.png"));
+               image=new ImageIcon(getClass().getResource("//GUI//images//oniichan//kirito//kiritoIdle.png"));
                p1Oniichan.setIcon(image);
                p1Oniichan.repaint();
                break;
            case 2:
-               image=new ImageIcon(getClass().getResource("GUI//images//oniichan//koyomi//koyomiIdle.png"));
+               image=new ImageIcon(getClass().getResource("//GUI//images//oniichan//koyomi//koyomiIdle.png"));
                p1Oniichan.setIcon(image);
                p1Oniichan.repaint();
                break;
@@ -1106,7 +1109,7 @@ public class Juego extends javax.swing.JFrame {
            case 4:
                break;
        }
-        
+
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void hero1ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseClicked
