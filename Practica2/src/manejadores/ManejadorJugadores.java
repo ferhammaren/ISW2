@@ -40,16 +40,16 @@ public class ManejadorJugadores {
         return p1;
 // return da.getJugador(input_Parameters).getString("nombre_Jugador");
     }
-
-    public ArrayList<Jugador> getRanking() throws SQLException {
-        ResultSet rs = da.getRanking();
+    
+    public ArrayList<Jugador> getRanking() throws SQLException {     
         jugadores = new ArrayList();
-
-        for (int i = 0; i < 10; i++) {
+        int cont = 0;
+        ResultSet rs = da.getRanking();
+        do {
             jugadores.add(new Jugador(rs.getString("nombre_jugador"), rs.getString("pwd_jugador"), Integer.parseInt(rs.getString("ganados")), Integer.parseInt(rs.getString("jugados")), false));
             rs.next();
-        }
-
+            cont++;
+        } while (!rs.isAfterLast() && cont < 5);
         return jugadores;
     }
 

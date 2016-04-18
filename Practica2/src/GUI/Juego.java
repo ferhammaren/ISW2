@@ -744,18 +744,25 @@ public class Juego extends javax.swing.JFrame {
         if (yesNoResponse == JOptionPane.YES_OPTION) {
             try {
                 control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
+                registerFlag = true;
+                System.out.println("ayy why");
             } catch (SQLException ex) {
-                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen");
                 registerFlag = false;
             }
-            registerFlag = true;
-            welcomeLabel.setText("Bienvenido " + control.getP1().getNombre()); //is this ok?
-            card.show(jPanel1, "menu");
+            //registerFlag = true;
+            if (registerFlag) {
+                welcomeLabel.setText("Bienvenido " + control.getP1().getNombre()); //is this ok?
+                card.show(jPanel1, "menu");
+            }else{
+                card.show(jPanel1, "menu");
+            }
         } else {
             card.show(jPanel1, "menu");
         }
-        registerPassword.setText(" ");
-        registerUsername1.setText(" ");
+        registerPassword.setText("");
+        registerUsername1.setText("");
     }//GEN-LAST:event_loginMouseClicked
 
     private void rankingLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingLabelMouseClicked
