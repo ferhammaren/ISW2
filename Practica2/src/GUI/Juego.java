@@ -757,12 +757,10 @@ public class Juego extends javax.swing.JFrame {
             try {
                 control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
                 registerFlag = true;
-                System.out.println("ayy why");
             } catch (SQLException ex) {
                 //Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
                 //JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen");
                 JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen", "Login", JOptionPane.WARNING_MESSAGE, null);
-
                 registerFlag = false;
             }
             //registerFlag = true;
@@ -999,29 +997,29 @@ public class Juego extends javax.swing.JFrame {
     private void hero1ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseExited
         // TODO add your handling code here:
         playerOniichan.setText(" ");
-            oniiChanPowerLevel.setValue(0);
-            oniichanAttack.setValue(0);
+        oniiChanPowerLevel.setValue(0);
+        oniichanAttack.setValue(0);
     }//GEN-LAST:event_hero1ButtonMouseExited
 
     private void hero2ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseExited
         // TODO add your handling code here:
-         playerOniichan.setText(" ");
-            oniiChanPowerLevel.setValue(0);
-            oniichanAttack.setValue(0);
+        playerOniichan.setText(" ");
+        oniiChanPowerLevel.setValue(0);
+        oniichanAttack.setValue(0);
     }//GEN-LAST:event_hero2ButtonMouseExited
 
     private void hero3ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseExited
         // TODO add your handling code here:
-         playerOniichan.setText(" ");
-            oniiChanPowerLevel.setValue(0);
-            oniichanAttack.setValue(0);
+        playerOniichan.setText(" ");
+        oniiChanPowerLevel.setValue(0);
+        oniichanAttack.setValue(0);
     }//GEN-LAST:event_hero3ButtonMouseExited
 
     private void hero4ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseExited
         // TODO add your handling code here:
-         playerOniichan.setText(" ");
-            oniiChanPowerLevel.setValue(0);
-            oniichanAttack.setValue(0);
+        playerOniichan.setText(" ");
+        oniiChanPowerLevel.setValue(0);
+        oniichanAttack.setValue(0);
     }//GEN-LAST:event_hero4ButtonMouseExited
 
     /**
