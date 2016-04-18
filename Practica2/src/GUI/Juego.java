@@ -338,6 +338,9 @@ public class Juego extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 hero1ButtonMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hero1ButtonMouseExited(evt);
+            }
         });
         hero1Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,6 +356,9 @@ public class Juego extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 hero2ButtonMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hero2ButtonMouseExited(evt);
+            }
         });
 
         hero3Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/osomatsu.jpg"))); // NOI18N
@@ -363,6 +369,9 @@ public class Juego extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 hero3ButtonMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hero3ButtonMouseExited(evt);
+            }
         });
 
         hero4Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/kyousuke.jpg"))); // NOI18N
@@ -372,6 +381,9 @@ public class Juego extends javax.swing.JFrame {
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 hero4ButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hero4ButtonMouseExited(evt);
             }
         });
 
@@ -979,6 +991,34 @@ public class Juego extends javax.swing.JFrame {
             oniichanAttack.setValue(12);
         }
     }//GEN-LAST:event_hero4ButtonMouseEntered
+
+    private void hero1ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseExited
+        // TODO add your handling code here:
+        playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+    }//GEN-LAST:event_hero1ButtonMouseExited
+
+    private void hero2ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseExited
+        // TODO add your handling code here:
+         playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+    }//GEN-LAST:event_hero2ButtonMouseExited
+
+    private void hero3ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseExited
+        // TODO add your handling code here:
+         playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+    }//GEN-LAST:event_hero3ButtonMouseExited
+
+    private void hero4ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseExited
+        // TODO add your handling code here:
+         playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+    }//GEN-LAST:event_hero4ButtonMouseExited
 
     /**
      * @param args the command line arguments
