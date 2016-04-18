@@ -748,7 +748,9 @@ public class Juego extends javax.swing.JFrame {
                 System.out.println("ayy why");
             } catch (SQLException ex) {
                 //Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen");
+                //JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen");
+                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen", "Login", JOptionPane.WARNING_MESSAGE, null);
+
                 registerFlag = false;
             }
             //registerFlag = true;
@@ -901,6 +903,8 @@ public class Juego extends javax.swing.JFrame {
             } catch (SQLException ex) {
 
             }
+        } else {//Mensaje de error al querer iniciar el juego sin haber iniciado sesión
+            JOptionPane.showMessageDialog(null, "No has iniciado sesión, no puedes jugar!", "Error", JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jugarLabelMouseClicked
 
