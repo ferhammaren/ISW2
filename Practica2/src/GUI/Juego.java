@@ -54,6 +54,8 @@ public class Juego extends javax.swing.JFrame {
         welcomeLabel = new javax.swing.JLabel();
         jugarLabel1 = new javax.swing.JLabel();
         play = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         nuevoJugador = new javax.swing.JPanel();
         uNInsert = new javax.swing.JLabel();
         uNInsert1 = new javax.swing.JLabel();
@@ -113,6 +115,7 @@ public class Juego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SUPER BATTLE HEROES 2ND ANNIVERSARY GOLD EDITION WITH DLC");
+        setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         jPanel1.setLayout(new java.awt.CardLayout());
@@ -225,20 +228,36 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(rankingLabel)
                 .addGap(18, 18, 18)
                 .addComponent(salirLabel)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         jPanel1.add(menu, "menu");
+
+        jLabel8.setText("jLabel8");
+
+        jLabel9.setText("jLabel9");
 
         javax.swing.GroupLayout playLayout = new javax.swing.GroupLayout(play);
         play.setLayout(playLayout);
         playLayout.setHorizontalGroup(
             playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
+            .addGroup(playLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playLayout.createSequentialGroup()
+                .addContainerGap(791, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(125, 125, 125))
         );
         playLayout.setVerticalGroup(
             playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(playLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jPanel1.add(play, "play");
@@ -304,7 +323,7 @@ public class Juego extends javax.swing.JFrame {
                 .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerButton)
                     .addComponent(limpiarButton))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         jPanel1.add(nuevoJugador, "nuevoJugador");
@@ -547,7 +566,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(registeredClean)
                     .addComponent(login)
                     .addComponent(registeredBack))
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
 
         jPanel1.add(jugadorRegistrado, "jugadorRegistrado");
@@ -672,7 +691,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(rankingPlayer5Name)
                     .addComponent(rankingPlayer5Won)
                     .addComponent(rankingPlayer5Lost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(65, 65, 65))
         );
@@ -687,7 +706,7 @@ public class Juego extends javax.swing.JFrame {
         );
         instruccionesLayout.setVerticalGroup(
             instruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 609, Short.MAX_VALUE)
         );
 
         jPanel1.add(instrucciones, "instrucciones");
@@ -1063,6 +1082,8 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
