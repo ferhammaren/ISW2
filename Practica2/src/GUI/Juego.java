@@ -61,6 +61,7 @@ public class Juego extends javax.swing.JFrame {
         registerPassword = new javax.swing.JPasswordField();
         registerButton = new javax.swing.JButton();
         limpiarButton = new javax.swing.JButton();
+        registerBack = new javax.swing.JButton();
         selectHero = new javax.swing.JPanel();
         playButton = new javax.swing.JButton();
         playerOniichan = new javax.swing.JLabel();
@@ -225,7 +226,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(rankingLabel)
                 .addGap(18, 18, 18)
                 .addComponent(salirLabel)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         jPanel1.add(menu, "menu");
@@ -238,7 +239,7 @@ public class Juego extends javax.swing.JFrame {
         );
         playLayout.setVerticalGroup(
             playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 609, Short.MAX_VALUE)
         );
 
         jPanel1.add(play, "play");
@@ -268,26 +269,42 @@ public class Juego extends javax.swing.JFrame {
             }
         });
 
+        registerBack.setText("Atrás");
+        registerBack.setName("registerBack"); // NOI18N
+        registerBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerBackMouseClicked(evt);
+            }
+        });
+        registerBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout nuevoJugadorLayout = new javax.swing.GroupLayout(nuevoJugador);
         nuevoJugador.setLayout(nuevoJugadorLayout);
         nuevoJugadorLayout.setHorizontalGroup(
             nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nuevoJugadorLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
                 .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(uNInsert)
-                    .addComponent(uNInsert1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(nuevoJugadorLayout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(uNInsert)
+                            .addComponent(uNInsert1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(nuevoJugadorLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(registerBack)
+                        .addGap(35, 35, 35)
+                        .addComponent(limpiarButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registerUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                    .addComponent(registerPassword))
+                .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(registerButton)
+                    .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(registerUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                        .addComponent(registerPassword)))
                 .addGap(320, 320, 320))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nuevoJugadorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(limpiarButton)
-                .addGap(59, 59, 59)
-                .addComponent(registerButton)
-                .addGap(405, 405, 405))
         );
         nuevoJugadorLayout.setVerticalGroup(
             nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,8 +320,9 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(nuevoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerButton)
-                    .addComponent(limpiarButton))
-                .addContainerGap(355, Short.MAX_VALUE))
+                    .addComponent(limpiarButton)
+                    .addComponent(registerBack))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         jPanel1.add(nuevoJugador, "nuevoJugador");
@@ -547,7 +565,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(registeredClean)
                     .addComponent(login)
                     .addComponent(registeredBack))
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         jPanel1.add(jugadorRegistrado, "jugadorRegistrado");
@@ -672,7 +690,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(rankingPlayer5Name)
                     .addComponent(rankingPlayer5Won)
                     .addComponent(rankingPlayer5Lost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(65, 65, 65))
         );
@@ -687,7 +705,7 @@ public class Juego extends javax.swing.JFrame {
         );
         instruccionesLayout.setVerticalGroup(
             instruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 609, Short.MAX_VALUE)
         );
 
         jPanel1.add(instrucciones, "instrucciones");
@@ -726,20 +744,23 @@ public class Juego extends javax.swing.JFrame {
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         // TODO add your handling code here:
         card = (CardLayout) jPanel1.getLayout();
-
-        int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas registrarte?", "Confirmar", JOptionPane.YES_NO_OPTION
-        );
-        if (yesNoResponse == JOptionPane.YES_OPTION) {
-            control.registerUser(registerUsername.getText(), registerPassword.getText());
-            welcomeLabel.setText("Bienvenido " + registerUsername.getText());
-            registerFlag = true;
-            card.show(jPanel1, "menu");
+        if (registerUsername.getText().isEmpty() || registerPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo de usuario/contraseña no puede estar vacío", "Registro", JOptionPane.WARNING_MESSAGE, null);
         } else {
-            registerFlag = false;
-            card.show(jPanel1, "menu");
+            int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas registrarte?", "Confirmar", JOptionPane.YES_NO_OPTION
+            );
+            if (yesNoResponse == JOptionPane.YES_OPTION) {
+                control.registerUser(registerUsername.getText(), registerPassword.getText());
+                welcomeLabel.setText("Bienvenido " + registerUsername.getText());
+                registerFlag = true;
+                card.show(jPanel1, "menu");
+            } else {
+                registerFlag = false;
+                card.show(jPanel1, "menu");
+            }
         }
-
-
+        registerUsername.setText("");
+        registerPassword.setText("");
     }//GEN-LAST:event_registerButtonMouseClicked
 
     private void limpiarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarButtonMouseClicked
@@ -751,29 +772,34 @@ public class Juego extends javax.swing.JFrame {
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         // TODO add your handling code here:
         card = (CardLayout) jPanel1.getLayout();
-        int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas iniciar sesión?", "Confirmar", JOptionPane.YES_NO_OPTION
-        );
-        if (yesNoResponse == JOptionPane.YES_OPTION) {
-            try {
-                control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
-                registerFlag = true;
-            } catch (SQLException ex) {
-                //Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                //JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen");
-                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos/No existen", "Login", JOptionPane.WARNING_MESSAGE, null);
-                registerFlag = false;
-            }
-            //registerFlag = true;
-            if (registerFlag) {
-                welcomeLabel.setText("Bienvenido " + control.getP1().getNombre()); //is this ok?
-                card.show(jPanel1, "menu");
+        if (registerUsername1.getText().isEmpty() || registerPassword1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo de usuario/contraseña no puede estar vacío", "Login", JOptionPane.WARNING_MESSAGE, null);
+        } else {
+            int yesNoResponse = JOptionPane.showConfirmDialog(null, "Deseas iniciar sesión?", "Confirmar", JOptionPane.YES_NO_OPTION
+            );
+            if (yesNoResponse == JOptionPane.YES_OPTION) {
+                try {
+                    control.getRegisteredUser(registerUsername1.getText(), registerPassword1.getText());
+                    registerFlag = true;
+                } catch (SQLException ex) {
+                    //Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos", "Login", JOptionPane.WARNING_MESSAGE, null);
+                    registerFlag = false;
+                }
+                //registerFlag = true;
+                if (registerFlag) {
+                    welcomeLabel.setText("Bienvenido " + control.getP1().getNombre()); //is this ok?
+                    card.show(jPanel1, "menu");
+                } else {
+                    //card.show(jPanel1, "menu");
+                    registerPassword1.setText("");
+                    registerUsername1.setText("");
+                }
             } else {
                 card.show(jPanel1, "menu");
             }
-        } else {
-            card.show(jPanel1, "menu");
         }
-        registerPassword.setText("");
+        registerPassword1.setText("");
         registerUsername1.setText("");
     }//GEN-LAST:event_loginMouseClicked
 
@@ -1022,6 +1048,16 @@ public class Juego extends javax.swing.JFrame {
         oniichanAttack.setValue(0);
     }//GEN-LAST:event_hero4ButtonMouseExited
 
+    private void registerBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerBackActionPerformed
+
+    private void registerBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBackMouseClicked
+        // TODO add your handling code here:
+        card = (CardLayout) jPanel1.getLayout();
+        card.show(jPanel1, "menu");
+    }//GEN-LAST:event_registerBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1096,6 +1132,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel rankingPlayer5Lost;
     private javax.swing.JLabel rankingPlayer5Name;
     private javax.swing.JLabel rankingPlayer5Won;
+    private javax.swing.JButton registerBack;
     private javax.swing.JButton registerButton;
     private javax.swing.JPasswordField registerPassword;
     private javax.swing.JPasswordField registerPassword1;
