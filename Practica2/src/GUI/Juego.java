@@ -852,6 +852,7 @@ public class Juego extends javax.swing.JFrame {
             try {
                 control.playAgainstAi(); //se agarra AI por default, se puede cambiar para permitir jugar entre dos personas.
                 //permitimos que AI escoga primero el heroe
+                // <editor-fold defaultstate="collapsed" desc="Jugar"> 
                 AIselectedHero = control.selectHero(2, 0);
                 switch (AIselectedHero) {
                     case 1:
@@ -898,6 +899,7 @@ public class Juego extends javax.swing.JFrame {
                         hero1Button.setEnabled(false);
                         break;
                 }
+                // </editor-fold>
             } catch (SQLException ex) {
 
             }
