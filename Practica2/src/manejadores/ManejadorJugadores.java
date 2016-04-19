@@ -21,6 +21,13 @@ public class ManejadorJugadores {
     private Jugador p1 = new Jugador(), p2 = new Jugador();
     private ArrayList<Jugador> jugadores;
 
+    
+    /**
+     * Registra un jugador en la base de datos
+     * @param name El nombre del jugador
+     * @param pwd  La contraseña del jugador
+     * @return Regresa si se pudo registrar el usuario
+     */
     public boolean registerUser(String name, String pwd) {
         boolean b;
         String input_Parameters = name + "," + pwd;
@@ -40,8 +47,8 @@ public class ManejadorJugadores {
         return p1;
 // return da.getJugador(input_Parameters).getString("nombre_Jugador");
     }
-    
-    public ArrayList<Jugador> getRanking() throws SQLException {     
+
+    public ArrayList<Jugador> getRanking() throws SQLException {
         jugadores = new ArrayList();
         int cont = 0;
         ResultSet rs = da.getRanking();

@@ -55,24 +55,40 @@ public class JuegoControl {
             isAi = p1.isAi();
         } else {
             isAi = p2.isAi();
-        }   
-       return manJuego.seleccionarHeroe(playerNumber, selectedHero, isAi);
+        }
+        return manJuego.seleccionarHeroe(playerNumber, selectedHero, isAi);
     }
 
-    public int fist(int player){
-       return manJuego.fist(player);
+    public int fist(int player) {
+        return manJuego.fist(player);
     }
-    
-    public int kick(int player){
+
+    public int kick(int player) {
         return manJuego.kick(player);
     }
-    
-    public int special(int player){
+
+    public int special(int player) {
         return manJuego.special(player);
     }
-////    public Jugador jugar() {
-////        return j1.jugar(); //jugar debe regresar un objeto jugador que representa el jugador vencedor
-////    }
+
+    /**
+     * Actualiza al jugador perdedor y el ganador
+     * @param winner El numero del jugador que gano (1 o 2)
+     * @param loser  El numero del jugador que perdio (1 o 2)
+     */
+    public void winner(int winner, int loser) {
+        if (winner == 1) {
+            p1.setGanados(p1.getGanados() + 1);
+            p1.setJugados(p1.getJugados() + 1);
+            p2.setJugados(p2.getJugados() + 1);
+            da.updateJugador(p1.getNombre() + "," + p1.getPass() + "," + p1.getGanados() + "," + p1.getJugados());
+        } else {
+            p2.setGanados(p2.getGanados() + 1);
+            p2.setJugados(p2.getJugados() + 1);
+            p1.setJugados(p1.getJugados() + 1);
+            da.updateJugador(p2.getNombre() + "," + p2.getPass() + "," + p2.getGanados() + "," + p2.getJugados());
+        }
+    }
 
     /**
      *
@@ -82,20 +98,19 @@ public class JuegoControl {
         return manejaJugadores.getRanking();
     }
 
-    public void playAgainstAi() throws SQLException{
-        p2=manejaJugadores.getRegisteredUser("Hackerman", "Hackerman");
+    public void playAgainstAi() throws SQLException {
+        p2 = manejaJugadores.getRegisteredUser("Hackerman", "Hackerman");
         p2.setAi(true);
     }
-    
-    public SuperHeroe getHero1(){
+
+    public SuperHeroe getHero1() {
         return manJuego.hero1;
     }
-    
-    public SuperHeroe getHero2(){
+
+    public SuperHeroe getHero2() {
         return manJuego.hero2;
     }
-    
-    
+
     public Jugador getP1() {
         return p1;
     }
@@ -103,7 +118,6 @@ public class JuegoControl {
 //    public void setP1(Jugador p1) {
 //        this.p1 = p1;
 //    }
-
 //    public Jugador getP2() {
 //        return p2;
 //    }
@@ -111,6 +125,4 @@ public class JuegoControl {
 //    public void setP2(Jugador p2) {
 //        this.p2 = p2;
 //    }
-
-    
 }

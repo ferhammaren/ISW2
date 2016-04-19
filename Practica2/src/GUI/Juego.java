@@ -1262,13 +1262,14 @@ public class Juego extends javax.swing.JFrame {
 
     private void playKick1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playKick1MouseClicked
         // TODO add your handling code here
+       
         int sw = 1;
         if (control.kick(1) > 0) {
             p1Special.setValue(control.getHero1().getSpecialMeter());
             p1Special.repaint();
             p2Health.setValue(control.getHero2().getEnergia());
             p2Health.repaint();
-            if (p1Special.getValue() < control.getHero1().special() / 2) {
+            if (p1Special.getValue() >= control.getHero1().special() / 2) {
                 playSpecial1.setEnabled(true);
             }
 
@@ -1284,7 +1285,7 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
-                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
                             playSpecial2.setEnabled(true);
                         }
                     } else {
@@ -1299,7 +1300,7 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
-                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                        if (p2Special.getValue() >=control.getHero2().special() / 2) {
                             playSpecial2.setEnabled(true);
                         }
                     } else {
@@ -1337,7 +1338,7 @@ public class Juego extends javax.swing.JFrame {
         if (control.fist((1)) > 0) {
             p1Special.setValue(control.getHero1().getSpecialMeter());
             p1Special.repaint();
-            if (p1Special.getValue() < control.getHero1().special() / 2) {
+            if (p1Special.getValue() >= control.getHero1().special() / 2) {
                 playSpecial1.setEnabled(true);
             }
             p2Health.setValue(control.getHero2().getEnergia());
@@ -1355,7 +1356,7 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
-                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                        if (p2Special.getValue() >=control.getHero2().special() / 2) {
                             playSpecial2.setEnabled(true);
                         }
                     } else {
@@ -1370,7 +1371,7 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
-                        if (p2Special.getValue() < control.getHero2().special() / 2) {
+                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
                             playSpecial2.setEnabled(true);
                         }
                     } else {

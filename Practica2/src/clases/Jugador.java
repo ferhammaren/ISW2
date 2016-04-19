@@ -98,11 +98,15 @@ public class Jugador {
         this.ai = ai;
     }
 
+        public String getPass(){
+        return pass;
+    }
     @Override
 //    public String toString() {
 //        return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}' + "\n";
 //    }
 //    
+
     public String toString() {
         //return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}' + "\n";
         return "Nombre: " + nombre + " | Jugados: " + jugados + " | Ganados: " + ganados + "\n";
