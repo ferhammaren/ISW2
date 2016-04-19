@@ -115,6 +115,9 @@ public class JuegoControl {
         return p1;
     }
 
+    public Jugador getP2(){
+        return p2;
+    }
 //    public void setP1(Jugador p1) {
 //        this.p1 = p1;
 //    }

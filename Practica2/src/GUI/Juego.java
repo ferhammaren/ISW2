@@ -1262,7 +1262,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void playKick1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playKick1MouseClicked
         // TODO add your handling code here
-       
+
         int sw = 1;
         if (control.kick(1) > 0) {
             p1Special.setValue(control.getHero1().getSpecialMeter());
@@ -1271,9 +1271,11 @@ public class Juego extends javax.swing.JFrame {
             p2Health.repaint();
             if (p1Special.getValue() >= control.getHero1().special() / 2) {
                 playSpecial1.setEnabled(true);
+            } else {
+
             }
 
-            //<editor-fold desc="Seleccion de comando de la AI">
+            //<editor-fold defaultstate="collapsed" desc="Seleccion de comando de la AI">
             sw = a.nextInt(3);
             if (sw < 1) {
                 sw = 1;
@@ -1289,6 +1291,40 @@ public class Juego extends javax.swing.JFrame {
                             playSpecial2.setEnabled(true);
                         }
                     } else {
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
@@ -1300,13 +1336,47 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
-                        if (p2Special.getValue() >=control.getHero2().special() / 2) {
+                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
                             playSpecial2.setEnabled(true);
                         }
                     } else {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        card.show(jPanel1, "ranking");
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
                     }
                     break;
                 case 3:
@@ -1321,7 +1391,42 @@ public class Juego extends javax.swing.JFrame {
                     } else {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
+                        //1 con jugados+
+
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        card.show(jPanel1, "ranking");
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
                     }
                     break;
             }
@@ -1329,6 +1434,40 @@ public class Juego extends javax.swing.JFrame {
 
         } else {
             //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
+            p2Health.setValue(0);
+            p2Health.repaint();
+            JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+            control.winner(1, 2);
+            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+            try {
+                // TODO add your handling code here:
+                ArrayList<Jugador> jug = control.getRanking();
+                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                rankingPlayer1Name.setText(jug.get(0).getNombre());
+                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                rankingPlayer2Name.setText(jug.get(1).getNombre());
+                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                rankingPlayer3Name.setText(jug.get(2).getNombre());
+                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                rankingPlayer4Name.setText(jug.get(3).getNombre());
+                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                rankingPlayer5Name.setText(jug.get(4).getNombre());
+                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                // </editor-fold>
+            } catch (SQLException ex) {
+                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+            card.show(jPanel1, "ranking");
         }
     }//GEN-LAST:event_playKick1MouseClicked
 
@@ -1344,7 +1483,7 @@ public class Juego extends javax.swing.JFrame {
             p2Health.setValue(control.getHero2().getEnergia());
             p2Health.repaint();
 
-            //<editor-fold desc="Seleccion de comando de la AI">
+            //<editor-fold defaultstate="collapsed" desc="Seleccion de comando de la AI">
             sw = a.nextInt(3);
             if (sw < 1) {
                 sw = 1;
@@ -1356,13 +1495,47 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
-                        if (p2Special.getValue() >=control.getHero2().special() / 2) {
+                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
                             playSpecial2.setEnabled(true);
                         }
                     } else {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                     }
                     break;
                 case 2:
@@ -1378,6 +1551,40 @@ public class Juego extends javax.swing.JFrame {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                     }
                     break;
                 case 3:
@@ -1393,12 +1600,80 @@ public class Juego extends javax.swing.JFrame {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                     }
                     break;
             }
             //</editor-fold>
 
         } else {
+            p2Health.setValue(0);
+            p2Health.repaint();
+            JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+            control.winner(1, 2);
+            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+            try {
+                // TODO add your handling code here:
+                ArrayList<Jugador> jug = control.getRanking();
+                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                rankingPlayer1Name.setText(jug.get(0).getNombre());
+                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                rankingPlayer2Name.setText(jug.get(1).getNombre());
+                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                rankingPlayer3Name.setText(jug.get(2).getNombre());
+                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                rankingPlayer4Name.setText(jug.get(3).getNombre());
+                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                rankingPlayer5Name.setText(jug.get(4).getNombre());
+                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                // </editor-fold>
+            } catch (SQLException ex) {
+                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+            card.show(jPanel1, "ranking");
             //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
         }
     }//GEN-LAST:event_playFist1MouseClicked
@@ -1411,10 +1686,10 @@ public class Juego extends javax.swing.JFrame {
             p1Special.repaint();
             p2Health.setValue(control.getHero2().getEnergia());
             p2Health.repaint();
-
+            p1Special.setEnabled(false);
             playSpecial2.setEnabled(false);
 
-            //<editor-fold desc="Seleccion de comando de la AI">
+            //<editor-fold  defaultstate="collapsed" desc="Seleccion de comando de la AI">
             sw = a.nextInt(3);
             if (sw < 1) {
                 sw = 1;
@@ -1430,6 +1705,40 @@ public class Juego extends javax.swing.JFrame {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                     }
                     break;
                 case 2:
@@ -1442,6 +1751,40 @@ public class Juego extends javax.swing.JFrame {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                     }
                     break;
                 case 3:
@@ -1450,17 +1793,86 @@ public class Juego extends javax.swing.JFrame {
                         p2Special.repaint();
                         p1Health.setValue(control.getHero1().getEnergia());
                         p1Health.repaint();
+                        p2Special.setEnabled(false);
                     } else {
                         //poner dialogo de que se termino el juego, 
                         //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
                         //1 con jugados+1
+                        p1Health.setValue(0);
+                        p1Health.repaint();
+                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                        control.winner(2, 1);
+                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                        try {
+                            // TODO add your handling code here:
+                            ArrayList<Jugador> jug = control.getRanking();
+                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                            rankingPlayer1Name.setText(jug.get(0).getNombre());
+                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                            rankingPlayer2Name.setText(jug.get(1).getNombre());
+                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                            rankingPlayer3Name.setText(jug.get(2).getNombre());
+                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                            rankingPlayer4Name.setText(jug.get(3).getNombre());
+                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                            rankingPlayer5Name.setText(jug.get(4).getNombre());
+                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                            // </editor-fold>
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //</editor-fold>
+                        card.show(jPanel1, "ranking");
                     }
                     break;
             }
             //</editor-fold>
 
         } else {
+            p2Health.setValue(0);
+            p2Health.repaint();
+            JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
             //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
+            control.winner(1, 2);
+            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+            try {
+                // TODO add your handling code here:
+                ArrayList<Jugador> jug = control.getRanking();
+                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                rankingPlayer1Name.setText(jug.get(0).getNombre());
+                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                rankingPlayer2Name.setText(jug.get(1).getNombre());
+                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                rankingPlayer3Name.setText(jug.get(2).getNombre());
+                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                rankingPlayer4Name.setText(jug.get(3).getNombre());
+                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                rankingPlayer5Name.setText(jug.get(4).getNombre());
+                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                // </editor-fold>
+            } catch (SQLException ex) {
+                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+            card.show(jPanel1, "ranking");
         }
     }//GEN-LAST:event_playSpecial1MouseClicked
 
