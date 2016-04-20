@@ -100,13 +100,6 @@ public class DataAccess {
         return a;
     }
 
-//    public ResultSet getRegistrados(){
-//        ResultSet res = null;
-//        CallableStatement c;
-//        try{
-//            c = this.getConnection().prepareCall("{call ")
-//        }
-//    }
     /**
      * Actualiza la informacion de juegos del jugador
      *
@@ -119,7 +112,6 @@ public class DataAccess {
         try {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
-            //String md5Pass=Encrypt.md5(input[1]);
             cs = this.getConnection().prepareCall("{call updateJugador(?,?,?,?)}");
             cs.setString(1, input[0]);
             cs.setString(2, Encrypt.md5(input[0]));

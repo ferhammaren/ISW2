@@ -36,6 +36,13 @@ public class ManejadorJugadores {
         return b;
     }
 
+    /**
+     * Inicia sesión de un usuario ya registrado
+     * @param name El nombre de usuario
+     * @param pwd Contraseña del usuario
+     * @return Objeto tipo jugador con los datos del jugador registrado
+     * @throws SQLException 
+     */
     public Jugador getRegisteredUser(String name, String pwd) throws SQLException {
         //  String enc_pwd = Encrypt.md5(pwd);
         ResultSet datosJugador;
@@ -48,6 +55,11 @@ public class ManejadorJugadores {
 // return da.getJugador(input_Parameters).getString("nombre_Jugador");
     }
 
+    /**
+     * Obtiene el ranking de los jugadores
+     * @return ArrayList con objetos tipo Jugador ordenados por juegos ganados
+     * @throws SQLException 
+     */
     public ArrayList<Jugador> getRanking() throws SQLException {
         jugadores = new ArrayList();
         int cont = 0;
@@ -60,6 +72,9 @@ public class ManejadorJugadores {
         return jugadores;
     }
 
+    /**
+     * Actualiza la información de un jugador
+     */
     public void updateJugador() {
 
     }

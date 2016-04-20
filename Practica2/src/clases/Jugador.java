@@ -82,6 +82,10 @@ public class Jugador {
         this.jugados = jugados;
     }
 
+    /**
+     * Regresa el nombre del jugador
+     * @return  El nombre del jugador
+     */
     public String getNombre() {
         return nombre;
     }
@@ -90,10 +94,18 @@ public class Jugador {
         this.nombre = nombre;
     }
 
+    /**
+     * Indica si el jugador es AI
+     * @return Verdadero si es AI, falso si es humano
+     */
     public boolean isAi() {
         return ai;
     }
 
+    /**
+     * Convierte al jugador en AI y viceversa
+     * @param ai true si es AI, false si no lo es
+     */
     public void setAi(boolean ai) {
         this.ai = ai;
     }

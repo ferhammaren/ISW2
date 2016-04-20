@@ -31,22 +31,52 @@ public class JuegoControl {
         manJuego = new ManejadorJuego();
     }
 
+    /**
+     * Regresa la bandera de si el jugador ya se registró o inició sesión
+     *
+     * @return true si ya cumplió el requisito
+     */
     public boolean getFlag() {
         return regFlag;
     }
 
+    /**
+     * Asigna la bandera de si el jugador ya se registró o inició sesión
+     *
+     * @param flag
+     */
     public void setFlag(boolean flag) {
         this.regFlag = flag;
     }
 
+    /**
+     * Registra un nuevo jugador
+     *
+     * @param name Nombre de usuario
+     * @param pwd Contraseña
+     */
     public void registerUser(String name, String pwd) {
         manejaJugadores.registerUser(name, pwd);
     }
 
+    /**
+     * Inicia sesión de un usuario registrado
+     *
+     * @param name El nombre de usuario
+     * @param pwd La contraseña del usuario
+     * @throws SQLException
+     */
     public void getRegisteredUser(String name, String pwd) throws SQLException {
         p1 = manejaJugadores.getRegisteredUser(name, pwd);
     }
 
+    /**
+     * Ejecuta la selección de héroes
+     *
+     * @param playerNumber El jugador que está seleccionando héroe
+     * @param selectedHero El héroe que seleccionó
+     * @return
+     */
     public int selectHero(int playerNumber, int selectedHero) {
 //        j1 = new Juego(p1, p2);
 //        j1.selectHero(a);
@@ -73,8 +103,9 @@ public class JuegoControl {
 
     /**
      * Actualiza al jugador perdedor y el ganador
+     *
      * @param winner El numero del jugador que gano (1 o 2)
-     * @param loser  El numero del jugador que perdio (1 o 2)
+     * @param loser El numero del jugador que perdio (1 o 2)
      */
     public void winner(int winner, int loser) {
         if (winner == 1) {
@@ -91,6 +122,7 @@ public class JuegoControl {
     }
 
     /**
+     * Regresa el ranking de jugadores en un Array List
      *
      * @return @throws SQLException
      */
@@ -98,6 +130,11 @@ public class JuegoControl {
         return manejaJugadores.getRanking();
     }
 
+    /**
+     * Utiliza a Hackerman como AI
+     *
+     * @throws SQLException
+     */
     public void playAgainstAi() throws SQLException {
         p2 = manejaJugadores.getRegisteredUser("Hackerman", "Hackerman");
         p2.setAi(true);
@@ -115,17 +152,7 @@ public class JuegoControl {
         return p1;
     }
 
-    public Jugador getP2(){
+    public Jugador getP2() {
         return p2;
     }
-//    public void setP1(Jugador p1) {
-//        this.p1 = p1;
-//    }
-//    public Jugador getP2() {
-//        return p2;
-//    }
-//
-//    public void setP2(Jugador p2) {
-//        this.p2 = p2;
-//    }
 }

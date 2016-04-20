@@ -7,6 +7,8 @@ package GUI;
 
 import clases.Jugador;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,7 +31,7 @@ public class Juego extends javax.swing.JFrame {
     private boolean playerClickFlag;
     private Random a = new Random();
     private int p1H, p2H; //variables para saber que imagenes vamos a usar en el juego
-
+Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
     /**
      * Creates new form Juego
      */
@@ -135,7 +137,8 @@ public class Juego extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SUPER BATTLE HEROES 2ND ANNIVERSARY GOLD EDITION WITH DLC");
+        setTitle("SUPER ONII-CHAN BATTLE");
+        setIconImage(img);
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
@@ -144,7 +147,7 @@ public class Juego extends javax.swing.JFrame {
         menu.setPreferredSize(new java.awt.Dimension(800, 600));
 
         jLabel1.setFont(new java.awt.Font("Channel", 0, 18)); // NOI18N
-        jLabel1.setText("Super Battle Heroes 2nd Anniversary Gold Edition with DLC");
+        jLabel1.setText("Super Onii-chan Battle");
 
         jugarLabel.setFont(new java.awt.Font("Nueva Std", 0, 24)); // NOI18N
         jugarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -211,23 +214,20 @@ public class Juego extends javax.swing.JFrame {
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuLayout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1))
-                    .addGroup(menuLayout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(welcomeLabel)))
+                .addGap(258, 258, 258)
+                .addComponent(welcomeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jugarLabel1)
-                    .addComponent(nuevoLabel)
-                    .addComponent(rankingLabel)
-                    .addComponent(salirLabel)
-                    .addComponent(registradoLabel)
-                    .addComponent(jugarLabel))
+                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jugarLabel1)
+                        .addComponent(nuevoLabel)
+                        .addComponent(rankingLabel)
+                        .addComponent(salirLabel)
+                        .addComponent(registradoLabel)
+                        .addComponent(jugarLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
@@ -1892,6 +1892,7 @@ public class Juego extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+            
                 new Juego().setVisible(true);
             }
         });
