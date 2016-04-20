@@ -11,7 +11,10 @@ import clases.SuperHeroe;
 import java.util.Random;
 
 /**
- *
+ * Esta clase se utiliza para manejar el flujo del juego.
+ * Utiliza la interfaz {@link clases.SuperHeroe} porque no sabemos que héroes son los que participarán en el juego.
+ * Toda la interacción es sólo entre los héroes, y para saber qué jugador fue el vencedor, se regresa el héroe1 o héroe2,
+ * que corresponden a jugador 1 y jugador 2 respectivamente.
  * @author Fer
  */
 public class ManejadorJuego {

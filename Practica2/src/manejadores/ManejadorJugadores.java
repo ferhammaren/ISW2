@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * Esta clase comunica {@link clases.DataAccess} y {@link clases.Jugador}, para tener objetos tipo Jugador que 
+ * tomen los datos desde una Base de Datos.
  * @author Fer
  */
 public class ManejadorJugadores {
@@ -21,11 +22,11 @@ public class ManejadorJugadores {
     private Jugador p1 = new Jugador(), p2 = new Jugador();
     private ArrayList<Jugador> jugadores;
 
-    
     /**
      * Registra un jugador en la base de datos
+     *
      * @param name El nombre del jugador
-     * @param pwd  La contraseña del jugador
+     * @param pwd La contraseña del jugador
      * @return Regresa si se pudo registrar el usuario
      */
     public boolean registerUser(String name, String pwd) {
@@ -38,10 +39,11 @@ public class ManejadorJugadores {
 
     /**
      * Inicia sesión de un usuario ya registrado
+     *
      * @param name El nombre de usuario
      * @param pwd Contraseña del usuario
      * @return Objeto tipo jugador con los datos del jugador registrado
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Jugador getRegisteredUser(String name, String pwd) throws SQLException {
         //  String enc_pwd = Encrypt.md5(pwd);
@@ -57,8 +59,9 @@ public class ManejadorJugadores {
 
     /**
      * Obtiene el ranking de los jugadores
+     *
      * @return ArrayList con objetos tipo Jugador ordenados por juegos ganados
-     * @throws SQLException 
+     * @throws SQLException
      */
     public ArrayList<Jugador> getRanking() throws SQLException {
         jugadores = new ArrayList();
@@ -74,8 +77,9 @@ public class ManejadorJugadores {
 
     /**
      * Actualiza la información de un jugador
+     * @param line String con los datos del jugador
      */
-    public void updateJugador() {
-
+    public void updateJugador(String line) {
+        da.updateJugador(line);
     }
 }

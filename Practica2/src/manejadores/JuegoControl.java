@@ -5,23 +5,20 @@
  */
 package manejadores;
 
-import clases.DataAccess;
-import clases.Juego;
 import clases.Jugador;
 import clases.SuperHeroe;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * La clase JuegoControl es la encargada de comunicar {@link manejadores.ManejadorJuego} y {@link manejadores.ManejadorJugadores}
+ * con la interfaz.
  * @author Fer
  */
 public class JuegoControl {
 
     private boolean regFlag = false;
-    private DataAccess da = new DataAccess();
     private Jugador p1 = new Jugador(), p2 = new Jugador();
-    private Juego j1;
     private ManejadorJugadores manejaJugadores;
     private ManejadorJuego manJuego;
     //private ArrayList<Jugador> jugadores;
@@ -112,12 +109,12 @@ public class JuegoControl {
             p1.setGanados(p1.getGanados() + 1);
             p1.setJugados(p1.getJugados() + 1);
             p2.setJugados(p2.getJugados() + 1);
-            da.updateJugador(p1.getNombre() + "," + p1.getPass() + "," + p1.getGanados() + "," + p1.getJugados());
+            manejaJugadores.updateJugador(p1.getNombre() + "," + p1.getPass() + "," + p1.getGanados() + "," + p1.getJugados());
         } else {
             p2.setGanados(p2.getGanados() + 1);
             p2.setJugados(p2.getJugados() + 1);
             p1.setJugados(p1.getJugados() + 1);
-            da.updateJugador(p2.getNombre() + "," + p2.getPass() + "," + p2.getGanados() + "," + p2.getJugados());
+            manejaJugadores.updateJugador(p2.getNombre() + "," + p2.getPass() + "," + p2.getGanados() + "," + p2.getJugados());
         }
     }
 

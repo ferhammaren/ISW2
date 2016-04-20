@@ -5,12 +5,13 @@
  */
 package clases;
 
-/**
- *
- * @author Fer
- */
+
 import java.sql.*;
 
+/**
+ * Clase para hacer operaciones con base de datos
+ * @author Fer
+ */
 public class DataAccess {
 
     private Connection conn = null;
@@ -114,7 +115,7 @@ public class DataAccess {
             //se llama al procedimiento almacenado con los parametros 
             cs = this.getConnection().prepareCall("{call updateJugador(?,?,?,?)}");
             cs.setString(1, input[0]);
-            cs.setString(2, Encrypt.md5(input[0]));
+            cs.setString(2, input[1]);
             cs.setString(3, input[2]);
             cs.setString(4, input[3]);
             cs.execute();

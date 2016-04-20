@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
 
+
+import GUI.Juego;
 import clases.DataAccess;
-import clases.DataAccess;
-import clases.Juego;
-import clases.Juego;
-import clases.Jugador;
 import clases.Jugador;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -87,9 +84,9 @@ public class sandbox {
                     break;
                 case "3":
                     // <editor-fold defaultstate="collapsed" desc="Jugar"> 
-                    Juego j=new Juego(p1,p2);
+//                    Juego j=new Juego(p1,p2);
                 //  j.selectHero();
-                  j.jugar();
+              //    j.jugar();
                     // </editor-fold> 
                     break;
                 case "4":

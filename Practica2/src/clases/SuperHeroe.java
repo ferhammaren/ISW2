@@ -6,7 +6,7 @@
 package clases;
 
 /**
- *
+ * Clase abstracta para hacer Super Héroes
  * @author Fer
  *
  */

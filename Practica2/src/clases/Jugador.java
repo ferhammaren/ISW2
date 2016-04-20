@@ -6,7 +6,7 @@
 package clases;
 
 /**
- *
+ * La clase jugador guarda los datos de un jugador en un objeto
  * @author Fer
  */
 public class Jugador {
