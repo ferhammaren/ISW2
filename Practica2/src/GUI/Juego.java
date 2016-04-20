@@ -31,7 +31,8 @@ public class Juego extends javax.swing.JFrame {
     private boolean playerClickFlag;
     private Random a = new Random();
     private int p1H, p2H; //variables para saber que imagenes vamos a usar en el juego
-Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
+    Image img = (new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
+
     /**
      * Creates new form Juego
      */
@@ -218,7 +219,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
                 .addComponent(welcomeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(413, Short.MAX_VALUE)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +229,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
                         .addComponent(salirLabel)
                         .addComponent(registradoLabel)
                         .addComponent(jugarLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +250,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
                 .addComponent(rankingLabel)
                 .addGap(18, 18, 18)
                 .addComponent(salirLabel)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         jPanel1.add(menu, "menu");
@@ -848,7 +849,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
                     .addComponent(rankingPlayer5Name)
                     .addComponent(rankingPlayer5Won)
                     .addComponent(rankingPlayer5Lost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(65, 65, 65))
         );
@@ -863,7 +864,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         );
         instruccionesLayout.setVerticalGroup(
             instruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
 
         jPanel1.add(instrucciones, "instrucciones");
@@ -1105,6 +1106,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
+        control.timer(timeLabel, 300);
         p1Health.setMaximum(control.getHero1().getEnergia());
         p1Health.setValue(control.getHero1().getEnergia());
         p2Health.setMaximum(control.getHero2().getEnergia());
@@ -1117,6 +1119,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         p2Health.repaint();
         p1Special.repaint();
         p2Special.repaint();
+        
         // <editor-fold defaultstate="collapsed" desc="Asignacion de las imagenes del principio"> 
         switch (p1H) {
             case 1:
@@ -1892,7 +1895,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            
+
                 new Juego().setVisible(true);
             }
         });
