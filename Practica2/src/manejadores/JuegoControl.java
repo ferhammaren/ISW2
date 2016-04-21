@@ -135,35 +135,36 @@ public class JuegoControl {
         return manejaJugadores.getRanking();
     }
 
-//    public void tempo(JLabel label){
-//        public void run(){
-//            timer(label);
-//        }
-//    }
-    
-    public void timer(JLabel label, int tiempo) {
+    /**
+     *
+     * @param label EL label que será actualizado en la GUI
+     * @param tiempo El tiempo determinado del juego
+     * @return True si el tiempo determinado ha llegado a su fin.
+     */
+    public boolean timer(JLabel label, int tiempo) {
         counter =  tiempo;
-        ActionListener action = new ActionListener()
-        {   
-            @Override
-            public void actionPerformed(ActionEvent event)
+        ActionListener action = (ActionEvent event) -> {
+           // System.out.println(timer.isRunning());
+            if(counter == 0)
             {
-                if(counter == 0)
-                {
-                    timer.stop();
-                    label.setText("Se acabó el tiempo");
-                }
-                else
-                {
-                    label.setText(""+counter);
-                    counter--;
-                }
+                timer.stop();
+                label.setText("0");
+            }
+            else
+            {
+                label.setText(""+counter);
+                counter--;
             }
         };
         timer = new Timer(1000, action);
         timer.setInitialDelay(0);
         timer.start();
-       // return counter;
+        //System.out.println(timer.isRunning());
+        return true;
+    }
+    
+    public boolean getTimer(){
+        return timer.isRunning();
     }
 
     /**

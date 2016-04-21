@@ -1106,7 +1106,7 @@ public class Juego extends javax.swing.JFrame {
         ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
-        control.timer(timeLabel, 300);
+        control.timer(timeLabel, 100);
         p1Health.setMaximum(control.getHero1().getEnergia());
         p1Health.setValue(control.getHero1().getEnergia());
         p2Health.setMaximum(control.getHero2().getEnergia());
