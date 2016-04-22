@@ -7,8 +7,12 @@ package manejadores;
 
 import clases.Jugador;
 import clases.SuperHeroe;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  * La clase JuegoControl es la encargada de comunicar
@@ -23,6 +27,8 @@ public class JuegoControl {
     private Jugador p1 = new Jugador(), p2 = new Jugador();
     private ManejadorJugadores manejaJugadores;
     private ManejadorJuego manJuego;
+    private int counter = 100;
+    private Timer timer;
     //private ArrayList<Jugador> jugadores;
 
     public JuegoControl() {
@@ -146,6 +152,38 @@ public class JuegoControl {
      */
     public ArrayList<Jugador> getRanking() throws SQLException {
         return manejaJugadores.getRanking();
+    }
+
+    /**
+     *
+     * @param label EL label que será actualizado en la GUI
+     * @param tiempo El tiempo determinado del juego
+     * @return True si el tiempo determinado ha llegado a su fin.
+     */
+    public boolean timer(JLabel label, int tiempo) {
+        counter =  tiempo;
+        ActionListener action = (ActionEvent event) -> {
+           // System.out.println(timer.isRunning());
+            if(counter == 0)
+            {
+                timer.stop();
+                label.setText("0");
+            }
+            else
+            {
+                label.setText(""+counter);
+                counter--;
+            }
+        };
+        timer = new Timer(1000, action);
+        timer.setInitialDelay(0);
+        timer.start();
+        //System.out.println(timer.isRunning());
+        return true;
+    }
+    
+    public boolean getTimer(){
+        return timer.isRunning();
     }
 
     /**

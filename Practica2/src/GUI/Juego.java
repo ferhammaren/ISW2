@@ -219,7 +219,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(welcomeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(413, Short.MAX_VALUE)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +229,7 @@ public class Juego extends javax.swing.JFrame {
                         .addComponent(salirLabel)
                         .addComponent(registradoLabel)
                         .addComponent(jugarLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +250,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(rankingLabel)
                 .addGap(18, 18, 18)
                 .addComponent(salirLabel)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         jPanel1.add(menu, "menu");
@@ -849,7 +849,7 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(rankingPlayer5Name)
                     .addComponent(rankingPlayer5Won)
                     .addComponent(rankingPlayer5Lost))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(65, 65, 65))
         );
@@ -864,7 +864,7 @@ public class Juego extends javax.swing.JFrame {
         );
         instruccionesLayout.setVerticalGroup(
             instruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
 
         jPanel1.add(instrucciones, "instrucciones");
@@ -1106,6 +1106,7 @@ public class Juego extends javax.swing.JFrame {
         ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
+        control.timer(timeLabel, 100);
         hero1Button.setEnabled(true);
         hero2Button.setEnabled(true);
         hero3Button.setEnabled(true);
@@ -1122,6 +1123,7 @@ public class Juego extends javax.swing.JFrame {
         p2Health.repaint();
         p1Special.repaint();
         p2Special.repaint();
+        
         // <editor-fold defaultstate="collapsed" desc="Asignacion de las imagenes del principio"> 
         switch (p1H) {
             case 1:
