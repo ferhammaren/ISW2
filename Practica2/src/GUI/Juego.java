@@ -8,7 +8,7 @@ package GUI;
 import clases.Jugador;
 import java.awt.CardLayout;
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -30,8 +30,9 @@ public class Juego extends javax.swing.JFrame {
     private boolean registerFlag = false;
     private boolean playerClickFlag;
     private Random a = new Random();
-    private int p1H, p2H; //variables para saber que imagenes vamos a usar en el juego
-    Image img = (new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
+    private int p1H = 0, p2H; //variables para saber que imagenes vamos a usar en el juego
+    private Image img = (new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
+    private ImageIcon image,image2;
 
     /**
      * Creates new form Juego
@@ -219,7 +220,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(welcomeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
-                .addContainerGap(413, Short.MAX_VALUE)
+                .addContainerGap(246, Short.MAX_VALUE)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +230,7 @@ public class Juego extends javax.swing.JFrame {
                         .addComponent(salirLabel)
                         .addComponent(registradoLabel)
                         .addComponent(jugarLabel)))
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,13 +251,18 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(rankingLabel)
                 .addGap(18, 18, 18)
                 .addComponent(salirLabel)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         jPanel1.add(menu, "menu");
 
-        p1Oniichan.setText("jo");
+        play.setMinimumSize(new java.awt.Dimension(800, 600));
+        play.setPreferredSize(new java.awt.Dimension(800, 600));
 
+        p1Oniichan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoIdle.png"))); // NOI18N
+        p1Oniichan.setMaximumSize(new java.awt.Dimension(380, 286));
+
+        p2Oniichan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoIdle2.png"))); // NOI18N
         p2Oniichan.setPreferredSize(new java.awt.Dimension(10, 10));
 
         playKick1.setText("Ataque 1");
@@ -305,60 +311,53 @@ public class Juego extends javax.swing.JFrame {
         playLayout.setHorizontalGroup(
             playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(playLayout.createSequentialGroup()
-                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(playLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(playLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(p1Health, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel11))
-                            .addGroup(playLayout.createSequentialGroup()
-                                .addComponent(playKick1)
-                                .addGap(28, 28, 28)
-                                .addComponent(playFist1)
-                                .addGap(30, 30, 30)
-                                .addComponent(playSpecial1)
-                                .addGap(226, 226, 226)
-                                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(playLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel12))
-                                    .addComponent(playKick2))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(playLayout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addComponent(jLabel8)
-                        .addGap(35, 35, 35)
-                        .addComponent(timeLabel)))
-                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(playLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(p2Health, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(playLayout.createSequentialGroup()
-                                .addComponent(playFist2)
-                                .addGap(18, 18, 18)
-                                .addComponent(playSpecial2))))
-                    .addGroup(playLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(131, 131, 131))
-            .addGroup(playLayout.createSequentialGroup()
-                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(playLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(p1Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(496, 496, 496)
-                        .addComponent(p2Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(playLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(350, 350, 350)
+                .addComponent(jLabel8)
+                .addGap(63, 63, 63)
+                .addComponent(timeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(playLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel9)
+                .addGap(29, 29, 29)
+                .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(242, 242, 242))
+            .addGroup(playLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(p1Health, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(p1Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(jLabel11))
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addComponent(playKick1)
+                        .addGap(18, 18, 18)
+                        .addComponent(playFist1)
+                        .addGap(31, 31, 31)
+                        .addComponent(playSpecial1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(playKick2)))
+                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(playFist2)
+                        .addGap(37, 37, 37)
+                        .addComponent(playSpecial2))
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(p2Health, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(p2Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
         playLayout.setVerticalGroup(
             playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,32 +372,27 @@ public class Juego extends javax.swing.JFrame {
                     .addComponent(p1Health, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(p2Health, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(171, 171, 171)
+                .addGap(18, 18, 18)
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(p2Oniichan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p1Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(playLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(p1Oniichan, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(p2Oniichan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(playKick1)
+                    .addComponent(playFist1)
+                    .addComponent(playSpecial1)
+                    .addComponent(playKick2)
+                    .addComponent(playFist2)
+                    .addComponent(playSpecial2))
+                .addGap(18, 18, 18)
                 .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playLayout.createSequentialGroup()
-                        .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(playKick1)
-                            .addComponent(playFist1)
-                            .addComponent(playSpecial1))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playLayout.createSequentialGroup()
-                        .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(playKick2)
-                            .addComponent(playFist2)
-                            .addComponent(playSpecial2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12)
-                            .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)))
-                .addGroup(playLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(p1Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                    .addComponent(p2Special, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(107, 107, 107))
         );
 
         jPanel1.add(play, "play");
@@ -501,11 +495,13 @@ public class Juego extends javax.swing.JFrame {
 
         jLabel7.setText("Power Level");
 
-        AIOniichan.setText("AIOniichan");
+        AIOniichan.setText("Kirito");
 
         AIattack.setText("Special Attack");
 
         jLabel5.setText("Power Level");
+
+        AILevelBar.setValue(45);
 
         hero1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/selection/kirito.png"))); // NOI18N
         hero1Button.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -563,6 +559,8 @@ public class Juego extends javax.swing.JFrame {
                 hero4ButtonMouseExited(evt);
             }
         });
+
+        AIAttack.setValue(25);
 
         javax.swing.GroupLayout selectHeroLayout = new javax.swing.GroupLayout(selectHero);
         selectHero.setLayout(selectHeroLayout);
@@ -1088,7 +1086,6 @@ public class Juego extends javax.swing.JFrame {
                         playerClickFlag = false;
                         hero1Button.doClick();
                         playerClickFlag = true;
-
                         hero1Button.setEnabled(false);
                         break;
                 }
@@ -1123,33 +1120,51 @@ public class Juego extends javax.swing.JFrame {
         p2Health.repaint();
         p1Special.repaint();
         p2Special.repaint();
-        
+
         // <editor-fold defaultstate="collapsed" desc="Asignacion de las imagenes del principio"> 
         switch (p1H) {
             case 1:
-                image = new ImageIcon("\\images\\oniichan\\kirito\\kiritoIdle.png");
+                image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoIdle.png"));
                 p1Oniichan.setIcon(image);
                 p1Oniichan.repaint();
                 break;
             case 2:
-                image = new ImageIcon("\\images\\oniichan\\koyomi\\koyomiIdle.png");
+                image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiIdle.png"));
                 p1Oniichan.setIcon(image);
                 p1Oniichan.repaint();
                 break;
             case 3:
+                image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuIdle.png"));
+                p1Oniichan.setIcon(image);
+                p1Oniichan.repaint();
                 break;
             case 4:
+                image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeIdle.png"));
+                p1Oniichan.setIcon(image);
+                p1Oniichan.repaint();
                 break;
         }
 
         switch (p2H) {
             case 1:
+                image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoIdle2.png"));
+                p2Oniichan.setIcon(image2);
+                p2Oniichan.repaint();
                 break;
             case 2:
+                image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiIdle2.png"));
+                p2Oniichan.setIcon(image2);
+                p2Oniichan.repaint();
                 break;
             case 3:
+                image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuIdle2.png"));
+                p2Oniichan.setIcon(image2);
+                p2Oniichan.repaint();
                 break;
             case 4:
+                image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeIdle.png"));
+                p2Oniichan.setIcon(image2);
+                p2Oniichan.repaint();
                 break;
         }
         // </editor-fold>
@@ -1162,9 +1177,6 @@ public class Juego extends javax.swing.JFrame {
         if (playerClickFlag == true) {
             control.selectHero(1, 1);
             p1H = 1;
-            playerOniichan.setText("Kirito");
-            oniiChanPowerLevel.setValue(45);
-            oniichanAttack.setValue(25);
 
         }
     }//GEN-LAST:event_hero1ButtonMouseClicked
@@ -1174,9 +1186,6 @@ public class Juego extends javax.swing.JFrame {
         if (playerClickFlag == true) {
             control.selectHero(1, 2);
             p1H = 2;
-            playerOniichan.setText("Koyomi Araragi");
-            oniiChanPowerLevel.setValue(31);
-            oniichanAttack.setValue(38);
         }
     }//GEN-LAST:event_hero2ButtonMouseClicked
 
@@ -1185,9 +1194,7 @@ public class Juego extends javax.swing.JFrame {
         if (playerClickFlag == true) {
             control.selectHero(1, 3);
             p1H = 3;
-            playerOniichan.setText("Todomatsu");
-            oniiChanPowerLevel.setValue(36);
-            oniichanAttack.setValue(20);
+
         }
     }//GEN-LAST:event_hero3ButtonMouseClicked
 
@@ -1196,9 +1203,7 @@ public class Juego extends javax.swing.JFrame {
         if (playerClickFlag == true) {
             control.selectHero(1, 4);
             p1H = 4;
-            playerOniichan.setText("Kyousuke Kousaka");
-            oniiChanPowerLevel.setValue(29);
-            oniichanAttack.setValue(12);
+
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
 
@@ -1208,7 +1213,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero1ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseEntered
         // TODO add your handling code here:
-        if (hero1Button.isEnabled() == true) {
+        if (hero1Button.isEnabled() == true && p1H == 0) {
             playerOniichan.setText("Kirito");
             oniiChanPowerLevel.setValue(45);
             oniichanAttack.setValue(25);
@@ -1217,7 +1222,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero2ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseEntered
         // TODO add your handling code here:
-        if (hero2Button.isEnabled() == true) {
+        if (hero2Button.isEnabled() == true && p1H == 0) {
             playerOniichan.setText("Koyomi Araragi");
             oniiChanPowerLevel.setValue(31);
             oniichanAttack.setValue(38);
@@ -1226,7 +1231,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero3ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseEntered
         // TODO add your handling code here:
-        if (hero3Button.isEnabled() == true) {
+        if (hero3Button.isEnabled() == true && p1H == 0) {
             playerOniichan.setText("Todomatsu");
             oniiChanPowerLevel.setValue(36);
             oniichanAttack.setValue(20);
@@ -1235,7 +1240,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero4ButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseEntered
         // TODO add your handling code here:
-        if (hero4Button.isEnabled() == true) {
+        if (hero4Button.isEnabled() == true && p1H == 0) {
             playerOniichan.setText("Kyousuke Kousaka");
             oniiChanPowerLevel.setValue(29);
             oniichanAttack.setValue(12);
@@ -1244,30 +1249,38 @@ public class Juego extends javax.swing.JFrame {
 
     private void hero1ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero1ButtonMouseExited
         // TODO add your handling code here:
-        playerOniichan.setText(" ");
-        oniiChanPowerLevel.setValue(0);
-        oniichanAttack.setValue(0);
+        if (p1H == 0) {
+            playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+        }
     }//GEN-LAST:event_hero1ButtonMouseExited
 
     private void hero2ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero2ButtonMouseExited
         // TODO add your handling code here:
-        playerOniichan.setText(" ");
-        oniiChanPowerLevel.setValue(0);
-        oniichanAttack.setValue(0);
+        if (p1H == 0) {
+            playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+        }
     }//GEN-LAST:event_hero2ButtonMouseExited
 
     private void hero3ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero3ButtonMouseExited
         // TODO add your handling code here:
-        playerOniichan.setText(" ");
-        oniiChanPowerLevel.setValue(0);
-        oniichanAttack.setValue(0);
+        if (p1H == 0) {
+            playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+        }
     }//GEN-LAST:event_hero3ButtonMouseExited
 
     private void hero4ButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hero4ButtonMouseExited
         // TODO add your handling code here:
-        playerOniichan.setText(" ");
-        oniiChanPowerLevel.setValue(0);
-        oniichanAttack.setValue(0);
+        if (p1H == 0) {
+            playerOniichan.setText(" ");
+            oniiChanPowerLevel.setValue(0);
+            oniichanAttack.setValue(0);
+        }
     }//GEN-LAST:event_hero4ButtonMouseExited
 
     private void registerBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBackActionPerformed
@@ -1284,180 +1297,276 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here
 
         int sw = 1;
-        if (control.kick(1) > 0) {
-            p1Special.setValue(control.getHero1().getSpecialMeter());
-            p1Special.repaint();
-            p2Health.setValue(control.getHero2().getEnergia());
-            p2Health.repaint();
-            if (p1Special.getValue() >= control.getHero1().special() / 2) {
-                playSpecial1.setEnabled(true);
+        if (control.getTimer()) {
+            if (control.kick(1) > 0) {
+                //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P1">
+                switch (p1H) {
+                    case 1:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoAttack1.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 2:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiAttack1.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 3:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuAttack1.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 4:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeAttack1.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                }
+                //</editor-fold>
+                p1Special.setValue(control.getHero1().getSpecialMeter());
+                p1Special.repaint();
+                p2Health.setValue(control.getHero2().getEnergia());
+                p2Health.repaint();
+                if (p1Special.getValue() >= control.getHero1().special() / 2) {
+                    playSpecial1.setEnabled(true);
+                } else {
+
+                }
+                aiSelect();
+//                //<editor-fold defaultstate="collapsed" desc="Seleccion de comando de la AI">
+//                sw = a.nextInt(3);
+//                if (sw < 1) {
+//                    sw = 1;
+//                }
+//                switch (sw) {
+//                    case 1:
+//                        if (control.kick(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                            //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P2">
+//                            switch (p1H) {
+//                                case 1:
+//                                    image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoAttack22.png"));
+//                                    p1Oniichan.setIcon(image);
+//                                    p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+//                                    p1Oniichan.repaint();
+//                                    break;
+//                                case 2:
+//                                    image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiAttack22.png"));
+//                                    p1Oniichan.setIcon(image);
+//                                    p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+//                                    p1Oniichan.repaint();
+//                                    break;
+//                                case 3:
+//                                    image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuAttack22.png"));
+//                                    p1Oniichan.setIcon(image);
+//                                    p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+//                                    p1Oniichan.repaint();
+//                                    break;
+//                                case 4:
+//                                    image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeAttack22.png"));
+//                                    p1Oniichan.setIcon(image);
+//                                    p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+//                                    p1Oniichan.repaint();
+//                                    break;
+//                            }
+//                            //</editor-fold>                                            
+//                            if (p2Special.getValue() >= control.getHero2().special() / 2) {
+//                                playSpecial2.setEnabled(true);
+//                            }
+//                        } else {
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                    case 2:
+//                        if (control.fist(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                            if (p2Special.getValue() >= control.getHero2().special() / 2) {
+//                                playSpecial2.setEnabled(true);
+//                            }
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+1
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            card.show(jPanel1, "ranking");
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                    case 3:
+//                        if (control.special(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//
+//                            playSpecial2.setEnabled(false);
+//
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+
+//
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            card.show(jPanel1, "ranking");
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                }
+//                //</editor-fold>
+
             } else {
+                //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
+                p2Health.setValue(0);
+                p2Health.repaint();
+                JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                control.winner(1, 2);
+                //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                try {
+                    // TODO add your handling code here:
+                    ArrayList<Jugador> jug = control.getRanking();
+                    // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                    rankingPlayer1Name.setText(jug.get(0).getNombre());
+                    rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                    rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
 
+                    rankingPlayer2Name.setText(jug.get(1).getNombre());
+                    rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                    rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                    rankingPlayer3Name.setText(jug.get(2).getNombre());
+                    rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                    rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                    rankingPlayer4Name.setText(jug.get(3).getNombre());
+                    rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                    rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                    rankingPlayer5Name.setText(jug.get(4).getNombre());
+                    rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                    rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                    // </editor-fold>
+                } catch (SQLException ex) {
+                    Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //</editor-fold>
+                card.show(jPanel1, "ranking");
+                p1H = 0;
+                p2H = 0;
             }
-
-            //<editor-fold defaultstate="collapsed" desc="Seleccion de comando de la AI">
-            sw = a.nextInt(3);
-            if (sw < 1) {
-                sw = 1;
-            }
-            switch (sw) {
-                case 1:
-                    if (control.kick(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
-                            playSpecial2.setEnabled(true);
-                        }
-                    } else {
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                    }
-                    break;
-                case 2:
-                    if (control.fist(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
-                            playSpecial2.setEnabled(true);
-                        }
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        card.show(jPanel1, "ranking");
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                    }
-                    break;
-                case 3:
-                    if (control.special(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-
-                        playSpecial2.setEnabled(false);
-
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+
-
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        card.show(jPanel1, "ranking");
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                    }
-                    break;
-            }
-            //</editor-fold>
-
         } else {
-            //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
-            p2Health.setValue(0);
-            p2Health.repaint();
-            JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-            control.winner(1, 2);
+            JOptionPane.showMessageDialog(null, "Se ha acabado el tiempo!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+            control.winner(0, 0);
             //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
             try {
                 // TODO add your handling code here:
@@ -1488,182 +1597,256 @@ public class Juego extends javax.swing.JFrame {
             }
             //</editor-fold>
             card.show(jPanel1, "ranking");
+            p1H = 0;
+            p2H = 0;
         }
     }//GEN-LAST:event_playKick1MouseClicked
 
     private void playFist1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playFist1MouseClicked
         // TODO add your handling code here:
         int sw = 1;
-        if (control.fist((1)) > 0) {
-            p1Special.setValue(control.getHero1().getSpecialMeter());
-            p1Special.repaint();
-            if (p1Special.getValue() >= control.getHero1().special() / 2) {
-                playSpecial1.setEnabled(true);
+        if (control.getTimer()) {
+            if (control.fist((1)) > 0) {
+                p1Special.setValue(control.getHero1().getSpecialMeter());
+                p1Special.repaint();
+                //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P1">
+                switch (p1H) {
+                    case 1:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoAttack2.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 2:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiAttack2.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 3:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuAttack2.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 4:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeAttack2.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                }
+                //</editor-fold>
+                if (p1Special.getValue() >= control.getHero1().special() / 2) {
+                    playSpecial1.setEnabled(true);
+                }
+                p2Health.setValue(control.getHero2().getEnergia());
+                p2Health.repaint();
+                aiSelect();
+//                //<editor-fold defaultstate="collapsed" desc="Seleccion de comando de la AI">
+//                sw = a.nextInt(3);
+//                if (sw < 1) {
+//                    sw = 1;
+//                }
+//                switch (sw) {
+//                    case 1:
+//                        if (control.kick(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                            if (p2Special.getValue() >= control.getHero2().special() / 2) {
+//                                playSpecial2.setEnabled(true);
+//                            }
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+1
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                    case 2:
+//                        if (control.fist(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                            if (p2Special.getValue() >= control.getHero2().special() / 2) {
+//                                playSpecial2.setEnabled(true);
+//                            }
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+1
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                    case 3:
+//                        if (control.special(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//
+//                            playSpecial2.setEnabled(false);
+//
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+1
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                }
+//                //</editor-fold>
+
+            } else {
+                p2Health.setValue(0);
+                p2Health.repaint();
+                JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                control.winner(1, 2);
+                //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                try {
+                    // TODO add your handling code here:
+                    ArrayList<Jugador> jug = control.getRanking();
+                    // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                    rankingPlayer1Name.setText(jug.get(0).getNombre());
+                    rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                    rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                    rankingPlayer2Name.setText(jug.get(1).getNombre());
+                    rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                    rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                    rankingPlayer3Name.setText(jug.get(2).getNombre());
+                    rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                    rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                    rankingPlayer4Name.setText(jug.get(3).getNombre());
+                    rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                    rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                    rankingPlayer5Name.setText(jug.get(4).getNombre());
+                    rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                    rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                    // </editor-fold>
+                } catch (SQLException ex) {
+                    Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //</editor-fold>
+                card.show(jPanel1, "ranking");
+                p1H = 0;
+                p2H = 0;
+                //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
             }
-            p2Health.setValue(control.getHero2().getEnergia());
-            p2Health.repaint();
-
-            //<editor-fold defaultstate="collapsed" desc="Seleccion de comando de la AI">
-            sw = a.nextInt(3);
-            if (sw < 1) {
-                sw = 1;
-            }
-            switch (sw) {
-                case 1:
-                    if (control.kick(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
-                            playSpecial2.setEnabled(true);
-                        }
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                    }
-                    break;
-                case 2:
-                    if (control.fist(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                        if (p2Special.getValue() >= control.getHero2().special() / 2) {
-                            playSpecial2.setEnabled(true);
-                        }
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                    }
-                    break;
-                case 3:
-                    if (control.special(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-
-                        playSpecial2.setEnabled(false);
-
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                    }
-                    break;
-            }
-            //</editor-fold>
-
         } else {
-            p2Health.setValue(0);
-            p2Health.repaint();
-            JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-            control.winner(1, 2);
+            JOptionPane.showMessageDialog(null, "Se ha acabado el tiempo!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+            control.winner(0, 0);
             //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
             try {
                 // TODO add your handling code here:
@@ -1694,176 +1877,247 @@ public class Juego extends javax.swing.JFrame {
             }
             //</editor-fold>
             card.show(jPanel1, "ranking");
-            //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
         }
     }//GEN-LAST:event_playFist1MouseClicked
 
     private void playSpecial1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playSpecial1MouseClicked
         // TODO add your handling code here:
         int sw = 1;
-        if (control.special((1)) > 0) {
-            p1Special.setValue(control.getHero1().getSpecialMeter());
-            p1Special.repaint();
-            p2Health.setValue(control.getHero2().getEnergia());
-            p2Health.repaint();
-            p1Special.setEnabled(false);
-            p1Special.repaint();
-            playSpecial2.setEnabled(false);
-            playSpecial2.repaint();
-            //<editor-fold  defaultstate="collapsed" desc="Seleccion de comando de la AI">
-            sw = a.nextInt(3);
-            if (sw < 1) {
-                sw = 1;
+        if (control.getTimer()) {
+            if (control.special((1)) > 0) {
+                p1Special.setValue(control.getHero1().getSpecialMeter());
+                p1Special.repaint();
+                p2Health.setValue(control.getHero2().getEnergia());
+                p2Health.repaint();
+                p1Special.setEnabled(false);
+                p1Special.repaint();
+                playSpecial2.setEnabled(false);
+                playSpecial2.repaint();
+                //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P1">
+                switch (p1H) {
+                    case 1:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoSpecial.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 2:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiSpecial.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 3:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuSpecial.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                    case 4:
+                        image = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeSpecial.png"));
+                        p1Oniichan.setIcon(image);
+                        p1Oniichan.setSize(image.getIconWidth(), image.getIconHeight());
+                        p1Oniichan.repaint();
+                        break;
+                }
+                //</editor-fold>
+
+                aiSelect();
+//                //<editor-fold  defaultstate="collapsed" desc="Seleccion de comando de la AI">
+//                sw = a.nextInt(3);
+//                if (sw < 1) {
+//                    sw = 1;
+//                }
+//                switch (sw) {
+//                    case 1:
+//                        if (control.fist(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                        } else {
+//
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                    case 2:
+//                        if (control.fist(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+1
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//                    case 3:
+//                        if (control.special(2) > 0) {
+//                            p2Special.setValue(control.getHero2().getSpecialMeter());
+//                            p2Special.repaint();
+//                            p1Health.setValue(control.getHero1().getEnergia());
+//                            p1Health.repaint();
+//                            p2Special.setEnabled(false);
+//                        } else {
+//                            //poner dialogo de que se termino el juego, 
+//                            //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
+//                            //1 con jugados+1
+//                            p1Health.setValue(0);
+//                            p1Health.repaint();
+//                            JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+//                            control.winner(2, 1);
+//                            //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+//                            try {
+//                                // TODO add your handling code here:
+//                                ArrayList<Jugador> jug = control.getRanking();
+//                                // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+//                                rankingPlayer1Name.setText(jug.get(0).getNombre());
+//                                rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+//                                rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+//
+//                                rankingPlayer2Name.setText(jug.get(1).getNombre());
+//                                rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+//                                rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+//
+//                                rankingPlayer3Name.setText(jug.get(2).getNombre());
+//                                rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+//                                rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+//
+//                                rankingPlayer4Name.setText(jug.get(3).getNombre());
+//                                rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+//                                rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+//
+//                                rankingPlayer5Name.setText(jug.get(4).getNombre());
+//                                rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+//                                rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+//                                // </editor-fold>
+//                            } catch (SQLException ex) {
+//                                Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            //</editor-fold>
+//                            card.show(jPanel1, "ranking");
+//                            p1H = 0;
+//                            p2H = 0;
+//                        }
+//                        break;
+//
+//                }
+//                //</editor-fold>
+
+            } else {
+                p2Health.setValue(0);
+                p2Health.repaint();
+                JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
+                control.winner(1, 2);
+                //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                try {
+                    // TODO add your handling code here:
+                    ArrayList<Jugador> jug = control.getRanking();
+                    // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                    rankingPlayer1Name.setText(jug.get(0).getNombre());
+                    rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                    rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                    rankingPlayer2Name.setText(jug.get(1).getNombre());
+                    rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                    rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                    rankingPlayer3Name.setText(jug.get(2).getNombre());
+                    rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                    rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                    rankingPlayer4Name.setText(jug.get(3).getNombre());
+                    rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                    rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                    rankingPlayer5Name.setText(jug.get(4).getNombre());
+                    rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                    rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                    // </editor-fold>
+                } catch (SQLException ex) {
+                    Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //</editor-fold>
+                card.show(jPanel1, "ranking");
+                p1H = 0;
+                p2H = 0;
             }
-            switch (sw) {
-                case 1:
-                    if (control.fist(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                    }
-                    break;
-                case 2:
-                    if (control.fist(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                    }
-                    break;
-                case 3:
-                    if (control.special(2) > 0) {
-                        p2Special.setValue(control.getHero2().getSpecialMeter());
-                        p2Special.repaint();
-                        p1Health.setValue(control.getHero1().getEnergia());
-                        p1Health.repaint();
-                        p2Special.setEnabled(false);
-                    } else {
-                        //poner dialogo de que se termino el juego, 
-                        //hacer el update para hackerman con ganados+1 y jugados +1, y update para el jugador
-                        //1 con jugados+1
-                        p1Health.setValue(0);
-                        p1Health.repaint();
-                        JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-                        control.winner(2, 1);
-                        //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
-                        try {
-                            // TODO add your handling code here:
-                            ArrayList<Jugador> jug = control.getRanking();
-                            // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
-                            rankingPlayer1Name.setText(jug.get(0).getNombre());
-                            rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
-                            rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
-
-                            rankingPlayer2Name.setText(jug.get(1).getNombre());
-                            rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
-                            rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
-
-                            rankingPlayer3Name.setText(jug.get(2).getNombre());
-                            rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
-                            rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
-
-                            rankingPlayer4Name.setText(jug.get(3).getNombre());
-                            rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
-                            rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
-
-                            rankingPlayer5Name.setText(jug.get(4).getNombre());
-                            rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
-                            rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
-                            // </editor-fold>
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //</editor-fold>
-                        card.show(jPanel1, "ranking");
-                    }
-                    break;
-            }
-            //</editor-fold>
-
         } else {
-            p2Health.setValue(0);
-            p2Health.repaint();
-            JOptionPane.showMessageDialog(null, control.getP1().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
-            //poner dialogo que se termino el juego, hacer el update aumentando los juegos ganados de jugador 1 y los jugados de jugador 1 y jugador 2
-            control.winner(1, 2);
+            JOptionPane.showMessageDialog(null, "Se ha acabado el tiempo!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+            control.winner(0, 0);
             //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
             try {
                 // TODO add your handling code here:
@@ -1894,8 +2148,248 @@ public class Juego extends javax.swing.JFrame {
             }
             //</editor-fold>
             card.show(jPanel1, "ranking");
+            p1H = 0;
+            p2H = 0;
         }
+        p1Special.setEnabled(false);
     }//GEN-LAST:event_playSpecial1MouseClicked
+
+    public void aiSelect() {     
+        int sw=1;
+        sw = a.nextInt(3);
+        if (sw < 1) {
+            sw = 1;
+        }
+        switch (sw) {
+            case 1:
+                if (control.kick(2) > 0) {
+                    p2Special.setValue(control.getHero2().getSpecialMeter());
+                    p2Special.repaint();
+                    p1Health.setValue(control.getHero1().getEnergia());
+                    p1Health.repaint();
+                    //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P2">
+                    switch (p2H) {
+                        case 1:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoAttack12.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 2:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiAttack12.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 3:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuAttack12.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 4:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeAttack12.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                    }
+                    //</editor-fold>                                            
+                    if (p2Special.getValue() >= control.getHero2().special() / 2) {
+                        playSpecial2.setEnabled(true);
+                    }
+                } else {
+                    p1Health.setValue(0);
+                    p1Health.repaint();
+                    JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                    control.winner(2, 1);
+                    //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                    try {
+                        // TODO add your handling code here:
+                        ArrayList<Jugador> jug = control.getRanking();
+                        // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                        rankingPlayer1Name.setText(jug.get(0).getNombre());
+                        rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                        rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                        rankingPlayer2Name.setText(jug.get(1).getNombre());
+                        rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                        rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                        rankingPlayer3Name.setText(jug.get(2).getNombre());
+                        rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                        rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                        rankingPlayer4Name.setText(jug.get(3).getNombre());
+                        rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                        rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                        rankingPlayer5Name.setText(jug.get(4).getNombre());
+                        rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                        rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                        // </editor-fold>
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //</editor-fold>
+                    card.show(jPanel1, "ranking");
+                    p1H = 0;
+                    p2H = 0;
+                }
+                break;
+            case 2:
+                if (control.fist(2) > 0) {
+                    p2Special.setValue(control.getHero2().getSpecialMeter());
+                    p2Special.repaint();
+                    p1Health.setValue(control.getHero1().getEnergia());
+                    p1Health.repaint();
+                    //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P2">
+                    switch (p2H) {
+                        case 1:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoAttack22.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p1Oniichan.repaint();
+                            break;
+                        case 2:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiAttack22.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 3:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuAttack22.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 4:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeAttack22.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                    }
+                    //</editor-fold>               
+                    if (p2Special.getValue() >= control.getHero2().special() / 2) {
+                        playSpecial2.setEnabled(true);
+                    }
+                } else {
+                    p1Health.setValue(0);
+                    p1Health.repaint();
+                    JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                    control.winner(2, 1);
+                    card.show(jPanel1, "ranking");
+                    //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                    try {
+                        // TODO add your handling code here:
+                        ArrayList<Jugador> jug = control.getRanking();
+                        // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                        rankingPlayer1Name.setText(jug.get(0).getNombre());
+                        rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                        rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                        rankingPlayer2Name.setText(jug.get(1).getNombre());
+                        rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                        rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                        rankingPlayer3Name.setText(jug.get(2).getNombre());
+                        rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                        rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                        rankingPlayer4Name.setText(jug.get(3).getNombre());
+                        rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                        rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                        rankingPlayer5Name.setText(jug.get(4).getNombre());
+                        rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                        rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                        // </editor-fold>
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //</editor-fold>
+                    p1H = 0;
+                    p2H = 0;
+                }
+                break;
+            case 3:
+                if (control.special(2) > 0) {
+                    p2Special.setValue(control.getHero2().getSpecialMeter());
+                    p2Special.repaint();
+                    p1Health.setValue(control.getHero1().getEnergia());
+                    p1Health.repaint();
+                    //<editor-fold defaultstate="collapsed" desc="cambio de imagenes P2">
+                    switch (p2H) {
+                        case 1:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kirito/kiritoSpecial2.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 2:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/koyomi/koyomiSpecial2.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                        case 3:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/todomatsu/todomatsuSpecial2.png"));
+                            p1Oniichan.setIcon(image2);
+                            p1Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p1Oniichan.repaint();
+                            break;
+                        case 4:
+                            image2 = new ImageIcon(getClass().getResource("/GUI/images/oniichan/kyousuke/kyousukeSpecial2.png"));
+                            p2Oniichan.setIcon(image2);
+                            p2Oniichan.setSize(image2.getIconWidth(), image2.getIconHeight());
+                            p2Oniichan.repaint();
+                            break;
+                    }
+                    //</editor-fold>               
+                    playSpecial2.setEnabled(false);
+
+                } else {
+                    p1Health.setValue(0);
+                    p1Health.repaint();
+                    JOptionPane.showMessageDialog(null, control.getP2().getNombre() + " ha ganado!", "GAME OVER", JOptionPane.ERROR_MESSAGE, null);
+                    control.winner(2, 1);
+                    card.show(jPanel1, "ranking");
+                    //<editor-fold  defaultstate="collapsed" desc="llenar ranking">
+                    try {
+                        // TODO add your handling code here:
+                        ArrayList<Jugador> jug = control.getRanking();
+                        // <editor-fold defaultstate="collapsed" desc="Asignar Texto a los Labels"> 
+                        rankingPlayer1Name.setText(jug.get(0).getNombre());
+                        rankingPlayer1Won.setText(jug.get(0).getGanados() + "");
+                        rankingPlayer1Lost.setText(jug.get(0).getJugados() - jug.get(0).getGanados() + "");
+
+                        rankingPlayer2Name.setText(jug.get(1).getNombre());
+                        rankingPlayer2Won.setText(jug.get(1).getGanados() + "");
+                        rankingPlayer2Lost.setText(jug.get(1).getJugados() - jug.get(1).getGanados() + "");
+
+                        rankingPlayer3Name.setText(jug.get(2).getNombre());
+                        rankingPlayer3Won.setText(jug.get(2).getGanados() + "");
+                        rankingPlayer3Lost.setText(jug.get(2).getJugados() - jug.get(2).getGanados() + "");
+
+                        rankingPlayer4Name.setText(jug.get(3).getNombre());
+                        rankingPlayer4Won.setText(jug.get(3).getGanados() + "");
+                        rankingPlayer4Lost.setText(jug.get(3).getJugados() - jug.get(3).getGanados() + "");
+
+                        rankingPlayer5Name.setText(jug.get(4).getNombre());
+                        rankingPlayer5Won.setText(jug.get(4).getGanados() + "");
+                        rankingPlayer5Lost.setText(jug.get(4).getJugados() - jug.get(4).getGanados() + "");
+                        // </editor-fold>
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //</editor-fold>
+                    p1H = 0;
+                    p2H = 0;
+                }
+                break;
+        }
+    }
 
     /**
      * @param args the command line arguments

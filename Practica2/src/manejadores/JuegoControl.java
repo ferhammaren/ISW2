@@ -137,10 +137,17 @@ public class JuegoControl {
             p1.setJugados(p1.getJugados() + 1);
             p2.setJugados(p2.getJugados() + 1);
             manejaJugadores.updateJugador(p1.getNombre() + "," + p1.getIndex() + "," + p1.getGanados() + "," + p1.getJugados());
-        } else {
+            manejaJugadores.updateJugador(p2.getNombre() + "," + p2.getIndex() + "," + p2.getGanados() + "," + p2.getJugados());
+        } else if (winner == 2) {
             p2.setGanados(p2.getGanados() + 1);
             p2.setJugados(p2.getJugados() + 1);
             p1.setJugados(p1.getJugados() + 1);
+            manejaJugadores.updateJugador(p1.getNombre() + "," + p1.getIndex() + "," + p1.getGanados() + "," + p1.getJugados());
+            manejaJugadores.updateJugador(p2.getNombre() + "," + p2.getIndex() + "," + p2.getGanados() + "," + p2.getJugados());
+        } else {
+            p1.setJugados(p1.getJugados() + 1);
+            p2.setJugados(p2.getJugados() + 1);
+            manejaJugadores.updateJugador(p1.getNombre() + "," + p1.getIndex() + "," + p1.getGanados() + "," + p1.getJugados());
             manejaJugadores.updateJugador(p2.getNombre() + "," + p2.getIndex() + "," + p2.getGanados() + "," + p2.getJugados());
         }
     }
@@ -161,17 +168,14 @@ public class JuegoControl {
      * @return True si el tiempo determinado ha llegado a su fin.
      */
     public boolean timer(JLabel label, int tiempo) {
-        counter =  tiempo;
+        counter = tiempo;
         ActionListener action = (ActionEvent event) -> {
-           // System.out.println(timer.isRunning());
-            if(counter == 0)
-            {
+            // System.out.println(timer.isRunning());
+            if (counter == 0) {
                 timer.stop();
                 label.setText("0");
-            }
-            else
-            {
-                label.setText(""+counter);
+            } else {
+                label.setText("" + counter);
                 counter--;
             }
         };
@@ -181,8 +185,8 @@ public class JuegoControl {
         //System.out.println(timer.isRunning());
         return true;
     }
-    
-    public boolean getTimer(){
+
+    public boolean getTimer() {
         return timer.isRunning();
     }
 
