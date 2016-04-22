@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ManejadorJugadores {
 
     private DataAccess da = new DataAccess();
-    private Jugador p1 = new Jugador(), p2 = new Jugador();
+    private Jugador p1 , p2 = new Jugador();
     private ArrayList<Jugador> jugadores;
 
     /**
@@ -50,9 +50,11 @@ public class ManejadorJugadores {
         ResultSet datosJugador;
         String input_Parameters = name + "," + pwd;
         datosJugador = da.getJugador(input_Parameters);
+        p1=new Jugador();
         p1.setNombre(datosJugador.getString("nombre_Jugador"));
         p1.setGanados(Integer.parseInt(datosJugador.getString("ganados")));
         p1.setJugados(Integer.parseInt(datosJugador.getString("jugados")));
+        p1.setIndex(Integer.parseInt((datosJugador.getString("index_Jugador"))));
         return p1;
 // return da.getJugador(input_Parameters).getString("nombre_Jugador");
     }
@@ -68,7 +70,7 @@ public class ManejadorJugadores {
         int cont = 0;
         ResultSet rs = da.getRanking();
         do {
-            jugadores.add(new Jugador(rs.getString("nombre_jugador"), rs.getString("pwd_jugador"), Integer.parseInt(rs.getString("ganados")), Integer.parseInt(rs.getString("jugados")), false));
+            jugadores.add(new Jugador(rs.getString("nombre_jugador"), Integer.parseInt(rs.getString("ganados")), Integer.parseInt(rs.getString("jugados")), false,Integer.parseInt((rs.getString("index_Jugador")))));
             rs.next();
             cont++;
         } while (!rs.isAfterLast() && cont < 5);

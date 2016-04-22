@@ -11,7 +11,6 @@ package clases;
  *
  */
 public abstract class SuperHeroe {
-
     private int energia;
     private int specialMeter;
     private String name;

@@ -31,7 +31,8 @@ public class Juego extends javax.swing.JFrame {
     private boolean playerClickFlag;
     private Random a = new Random();
     private int p1H, p2H; //variables para saber que imagenes vamos a usar en el juego
-Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
+    Image img = (new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getImage();
+
     /**
      * Creates new form Juego
      */
@@ -1105,6 +1106,10 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         ImageIcon image;
         card = (CardLayout) jPanel1.getLayout();
         card.show(jPanel1, "play");
+        hero1Button.setEnabled(true);
+        hero2Button.setEnabled(true);
+        hero3Button.setEnabled(true);
+        hero4Button.setEnabled(true);
         p1Health.setMaximum(control.getHero1().getEnergia());
         p1Health.setValue(control.getHero1().getEnergia());
         p2Health.setMaximum(control.getHero2().getEnergia());
@@ -1155,6 +1160,10 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         if (playerClickFlag == true) {
             control.selectHero(1, 1);
             p1H = 1;
+            playerOniichan.setText("Kirito");
+            oniiChanPowerLevel.setValue(45);
+            oniichanAttack.setValue(25);
+
         }
     }//GEN-LAST:event_hero1ButtonMouseClicked
 
@@ -1162,7 +1171,10 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         // TODO add your handling code here:
         if (playerClickFlag == true) {
             control.selectHero(1, 2);
-            p1H = 1;
+            p1H = 2;
+            playerOniichan.setText("Koyomi Araragi");
+            oniiChanPowerLevel.setValue(31);
+            oniichanAttack.setValue(38);
         }
     }//GEN-LAST:event_hero2ButtonMouseClicked
 
@@ -1171,6 +1183,9 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         if (playerClickFlag == true) {
             control.selectHero(1, 3);
             p1H = 3;
+            playerOniichan.setText("Todomatsu");
+            oniiChanPowerLevel.setValue(36);
+            oniichanAttack.setValue(20);
         }
     }//GEN-LAST:event_hero3ButtonMouseClicked
 
@@ -1179,6 +1194,9 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         if (playerClickFlag == true) {
             control.selectHero(1, 4);
             p1H = 4;
+            playerOniichan.setText("Kyousuke Kousaka");
+            oniiChanPowerLevel.setValue(29);
+            oniichanAttack.setValue(12);
         }
     }//GEN-LAST:event_hero4ButtonMouseClicked
 
@@ -1687,8 +1705,9 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
             p2Health.setValue(control.getHero2().getEnergia());
             p2Health.repaint();
             p1Special.setEnabled(false);
+            p1Special.repaint();
             playSpecial2.setEnabled(false);
-
+            playSpecial2.repaint();
             //<editor-fold  defaultstate="collapsed" desc="Seleccion de comando de la AI">
             sw = a.nextInt(3);
             if (sw < 1) {
@@ -1892,7 +1911,7 @@ Image img =(new ImageIcon(getClass().getResource("/GUI/images/icon.png"))).getIm
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            
+
                 new Juego().setVisible(true);
             }
         });

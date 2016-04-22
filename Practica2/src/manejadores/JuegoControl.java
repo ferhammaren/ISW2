@@ -11,8 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * La clase JuegoControl es la encargada de comunicar {@link manejadores.ManejadorJuego} y {@link manejadores.ManejadorJugadores}
+ * La clase JuegoControl es la encargada de comunicar
+ * {@link manejadores.ManejadorJuego} y {@link manejadores.ManejadorJugadores}
  * con la interfaz.
+ *
  * @author Fer
  */
 public class JuegoControl {
@@ -86,14 +88,33 @@ public class JuegoControl {
         return manJuego.seleccionarHeroe(playerNumber, selectedHero, isAi);
     }
 
+    /**
+     * Ejecuta un puñetazo de un heroe a otro y aumenta la barra de especial
+     *
+     * @param player Jugador que manda el puñetazo
+     * @return La energía restante del héroe que recibió el ataque
+     */
     public int fist(int player) {
         return manJuego.fist(player);
     }
 
+    /**
+     * Ejecuta una patada de un héroe a otro y aumenta la barra de especial
+     *
+     * @param player Jugador que manda la patada
+     * @return La energía restante del héroe que recibió el ataque
+     */
     public int kick(int player) {
         return manJuego.kick(player);
     }
 
+    /**
+     * Valida si el jugador puede ejecutar el ataque especial, si puede hacerlo,
+     * lo ejecuta contra el otro héroe y vacía la barra de especial
+     *
+     * @param player Jugador que usa el especial
+     * @return Energía restante del jugador que recibió el ataque
+     */
     public int special(int player) {
         return manJuego.special(player);
     }
@@ -109,12 +130,12 @@ public class JuegoControl {
             p1.setGanados(p1.getGanados() + 1);
             p1.setJugados(p1.getJugados() + 1);
             p2.setJugados(p2.getJugados() + 1);
-            manejaJugadores.updateJugador(p1.getNombre() + "," + p1.getPass() + "," + p1.getGanados() + "," + p1.getJugados());
+            manejaJugadores.updateJugador(p1.getNombre() + "," + p1.getIndex() + "," + p1.getGanados() + "," + p1.getJugados());
         } else {
             p2.setGanados(p2.getGanados() + 1);
             p2.setJugados(p2.getJugados() + 1);
             p1.setJugados(p1.getJugados() + 1);
-            manejaJugadores.updateJugador(p2.getNombre() + "," + p2.getPass() + "," + p2.getGanados() + "," + p2.getJugados());
+            manejaJugadores.updateJugador(p2.getNombre() + "," + p2.getIndex() + "," + p2.getGanados() + "," + p2.getJugados());
         }
     }
 

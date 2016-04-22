@@ -104,7 +104,7 @@ public class DataAccess {
     /**
      * Actualiza la informacion de juegos del jugador
      *
-     * @param line String que contiene los parametros
+     * @param line String que contiene los parametros en el siguiente orden: Nombre, index, ganados, jugados
      * @return ResultSet con los datos del jugador actualziados
      */
     public ResultSet updateJugador(String line) {
@@ -114,8 +114,8 @@ public class DataAccess {
             String input[] = line.split(",");
             //se llama al procedimiento almacenado con los parametros 
             cs = this.getConnection().prepareCall("{call updateJugador(?,?,?,?)}");
-            cs.setString(1, input[0]);
-            cs.setString(2, input[1]);
+            cs.setString(1, input[0]); 
+            cs.setString(2, input[1]); 
             cs.setString(3, input[2]);
             cs.setString(4, input[3]);
             cs.execute();

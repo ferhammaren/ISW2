@@ -15,24 +15,24 @@ public class Jugador {
     private String pass;
     private int ganados;
     private int jugados;
+    private int index;
     private boolean ai;
 
     /**
      * Constructor 1
      *
      * @param nombre El nombre de usuario que eligio el jugador
-     * @param pass La contraseña del jugador
      * @param ganados El número de juegos ganados
      * @param jugados El número de juegos jugados
      * @param ai Determina si el jugador es inteligencia artificial o humano
-     *
+     * @param index El indice del jugador dentro de la tabla
      */
-    public Jugador(String nombre, String pass, int ganados, int jugados, boolean ai) {
+    public Jugador(String nombre, int ganados, int jugados, boolean ai,int index) {
         this.nombre = nombre;
-        this.pass = pass;
         this.ganados = ganados;
         this.jugados = jugados;
         this.ai = ai;
+        this.index=index;
     }
 
     /**
@@ -113,11 +113,18 @@ public class Jugador {
         public String getPass(){
         return pass;
     }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+        
+        
+        
     @Override
-//    public String toString() {
-//        return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}' + "\n";
-//    }
-//    
 
     public String toString() {
         //return "Jugador{" + "nombre=" + nombre + ", ganados=" + ganados + ", jugados=" + jugados + '}' + "\n";
